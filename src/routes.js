@@ -5,15 +5,19 @@ import {
 } from "react-router-dom";
 import Landing from './pages/Landing.tsx';
 import Demo from './pages/Demo.tsx';
+import About from "./pages/About";
+import Podcast from "./pages/Podcast";
+import Blog from "./pages/Blog";
 
 
 export default function Router() {
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
+      <Route exact path="/" element={<Landing />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/podcast" element={<Podcast />} />
+      <Route path="/blog" element={<Blog />} />
       <Route path="/demo" element={<Demo />} />
     </Routes>
-
   )
-
 } 

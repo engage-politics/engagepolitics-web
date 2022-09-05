@@ -216,13 +216,13 @@ const NavBar = (): JSX.Element => {
         <MenuLinks>
           {/* {candidateAdminNavLink()} */}
           <NavAnchor onClick={() => redirectTo('/')}>Home</NavAnchor>
-          {/* <NavAnchor onClick={() => redirectTo('/help')}>About</NavAnchor>
-          <NavAnchor onClick={() => redirectTo('/help')}>Feature</NavAnchor>
-          <NavAnchor onClick={() => redirectTo('/')}>Podcast</NavAnchor>
-          <NavAnchor onClick={() => redirectTo('/')}>Blog</NavAnchor> */}
+           <NavAnchor onClick={() => redirectTo('/about')}>About</NavAnchor>
+          {/* <NavAnchor onClick={() => redirectTo('/help')}>Feature</NavAnchor> */}
+          <NavAnchor onClick={() => redirectTo('/podcast')}>Podcast</NavAnchor>
+          <NavAnchor onClick={() => redirectTo('/blog')}>Blog</NavAnchor> 
         </MenuLinks>
         <NavCTAButton onClick={() => redirectTo('/demo')}>
-        For Campaigns
+          Campaigns
         </NavCTAButton>
       </MenuContainer>
     </Container>
