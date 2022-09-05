@@ -1,6 +1,6 @@
 import React from "react";
 import tw from "tailwind-styled-components";
-
+import { aboutBlob,aboutBlobStroke,aboutSideShape } from "../utils/imagePaths";
 const Container = tw.div`
 container
 text-center
@@ -40,9 +40,9 @@ const Box = tw.div`
 w-full
 `;
 const AboutImageWrapper = tw.div`
-bg-black
 h-96
 w-full
+relative
 `
 function About() {
   return (
@@ -68,7 +68,10 @@ function About() {
           society
         </Paragraph>
       </Box>
-      <AboutImageWrapper/>
+      <AboutImageWrapper>
+        <img className=" absolute z-10" style={{left:'12%',top:'10%'}} src={aboutBlobStroke} alt="about_blob_2"/>
+        <img className=" absolute z-1 top-0" src={aboutBlob} alt="about_blob_1" />
+        </AboutImageWrapper>
     </Container>
   );
 }

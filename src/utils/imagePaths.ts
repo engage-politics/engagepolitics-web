@@ -30,3 +30,7 @@ export const downloadApple = '/assets/images/download-apple.svg';
 export const downloadGoogle = '/assets/images/download-google.svg';
 
 export const engageLogo = '/assets/images/engage-logo.svg';
+
+export const aboutBlobStroke = '/assets/images/stroke-about.svg'
+export const aboutBlob = '/assets/images/about.svg'
+export const aboutSideShape = '/assets/images/sideshape-about.svg'
