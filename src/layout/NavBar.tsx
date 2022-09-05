@@ -222,7 +222,7 @@ const NavBar = (): JSX.Element => {
           <NavAnchor onClick={() => redirectTo('/')}>Blog</NavAnchor> */}
         </MenuLinks>
         <NavCTAButton onClick={() => redirectTo('/demo')}>
-        For  Campaign
+        For Campaigns
         </NavCTAButton>
       </MenuContainer>
     </Container>
