@@ -198,11 +198,11 @@ const NavBar = (): JSX.Element => {
 
   return (
     <Container className={`${hamburgerActive ? 'fixed' : ''}`}>
-      <NavAnchor onClick={() => redirectTo('/')} >
+      <a onClick={() => redirectTo('/')} >
         <LogoLink title="Engage" onClick={() => handleClick(false)}>
           <img src={engageLogo}></img>
         </LogoLink>
-      </NavAnchor>
+      </a>
       <MenuToggle>
         <MenuTitle>{hamburgerActive ? 'Close' : 'Menu'}</MenuTitle>
         <Hamburger

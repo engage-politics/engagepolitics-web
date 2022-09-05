@@ -492,7 +492,7 @@ const Join = (): JSX.Element => {
                 <div className="flex flex-col xsm:flex-row xsm:gap-5">
                   <div className="flex-1">
                     <Label>Why are you interested in Engage?</Label>
-                    <TextInput placeholder=".." />
+                    <TextInput placeholder="..." />
                   </div>
                 </div>
 
@@ -501,8 +501,8 @@ const Join = (): JSX.Element => {
                 </Button>
               </FormCardBody>
             </FormCard>
-            <div className="m-auto max-w-2xl flex-1 sm:pl-10 md:mt-12  lg:text-left">
-              <Subtitle>
+            <div className="m-auto max-w-2xl flex-1 sm:pl-10 md:mt-12 xsm:mt-10  lg:text-left">
+              <Subtitle className="xsm:leading-10">
                 Get a free demo of Engage today, and see how we:
               </Subtitle>
               <Paragraph>
