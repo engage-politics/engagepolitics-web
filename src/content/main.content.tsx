@@ -29,10 +29,10 @@ export const HelpFAQ = {
 
 export const Carousel = {
   carouselImageNames: [
-    '/assets/images/phone-1.png',
-    '/assets/images/phone-2.png',
-    '/assets/images/phone-3.png',
-    '/assets/images/phone-4.png',
+    '/assets/images/phone-1-min.png',
+    '/assets/images/phone-2-min.png',
+    '/assets/images/phone-3-min.png',
+    '/assets/images/phone-4-min.png',
   ],
 };
 
