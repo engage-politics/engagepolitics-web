@@ -63,10 +63,10 @@ px-6 py-4 pb-12
 const CardTitle = tw.div`
 font-bold text-xl mb-2 text-sm text-ellipsis overflow-hidden whitespace-nowrap
 `;
-const CardContent = tw.p`
-text-gray-700 text-base
-max-h-[]
-`;
+// const CardContent = tw.p`
+// text-gray-700 text-base
+// max-h-[]
+// `;
 const CardSubtitle = tw.h6`
 text-xs
 text-blue-500
