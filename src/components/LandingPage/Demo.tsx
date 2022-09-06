@@ -74,22 +74,25 @@ const ImageC = styled.div`
   }
 
   .pic {
-    display: inline-block;
-    width: 100%;
+    display: block;
+    max-width: 210px;
     position: absolute;
+    height: 100%;
 
     img {
-      width: 50%;
-      height: 50%;
+      width: 100%;
+      height: 100%;
     }
   }
 
   .current {
-    left: 125%;
+    left: 26.5%;
+    opacity:1;
   }
 
   .current.move {
     left: 0;
+    opacity:0;
     transition: all 0.5s ease;
   }
 
@@ -102,10 +105,12 @@ const ImageC = styled.div`
     transition: all 0.5s ease;
   }
   .pic-wrapper {
-    background: lightgray;
-    left: -100%;
+    background: transparent;
     position: relative;
     border-radius: 12px;
+    height:100%;
+    display:flex;
+    justify-content:center;
   }
 
   .mask {
@@ -291,7 +296,7 @@ const Join = (): JSX.Element => {
 
           setIndexes(getNextIndex(imageStateRef.current.index));
         }, 600); // same delay as in the css transition here
-      }, 2500);
+      }, 2000);
 
       return () => clearInterval(interval);
     }
@@ -312,39 +317,39 @@ const Join = (): JSX.Element => {
     setIndexes(indexToMove);
     setArrowClicked(true);
   };
-  const [index, setIndex] = React.useState(0);
-  const timeoutRef: any = React.useRef(null);
+  // const [index, setIndex] = React.useState(0);
+  // const timeoutRef: any = React.useRef(null);
 
-  function resetTimeout() {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-  }
+  // function resetTimeout() {
+  //   if (timeoutRef.current) {
+  //     clearTimeout(timeoutRef.current);
+  //   }
+  // }
 
-  React.useEffect(() => {
-    resetTimeout();
-    timeoutRef.current = setTimeout(
-      () =>
-        setIndex((prevIndex) =>
-          prevIndex === content.carouselImageNames.length - 1
-            ? 0
-            : prevIndex + 1
-        ),
-      2500
-    );
+  // React.useEffect(() => {
+  //   resetTimeout();
+  //   timeoutRef.current = setTimeout(
+  //     () =>
+  //       setIndex((prevIndex) =>
+  //         prevIndex === content.carouselImageNames.length - 1
+  //           ? 0
+  //           : prevIndex + 1
+  //       ),
+  //     2500
+  //   );
 
-    return () => {
-      resetTimeout();
-    };
-  }, [index]);
-  const [sliderInitialized, setSliderInitialized] = useState<boolean>(false);
-  useEffect(() => {
-    if (!sliderInitialized) {
-      setTimeout(() => {
-        setSliderInitialized(true);
-      }, 2800);
-    }
-  }, [sliderInitialized]);
+  //   return () => {
+  //     resetTimeout();
+  //   };
+  // }, [index]);
+  // const [sliderInitialized, setSliderInitialized] = useState<boolean>(false);
+  // useEffect(() => {
+  //   if (!sliderInitialized) {
+  //     setTimeout(() => {
+  //       setSliderInitialized(true);
+  //     }, 2800);
+  //   }
+  // }, [sliderInitialized]);
 
   return (
     <div className="p-2">
@@ -374,7 +379,7 @@ const Join = (): JSX.Element => {
                   index={imageState.index}
                   arrowUsed={arrowClicked}
                 />
-                {!sliderInitialized && (
+                {/* {!sliderInitialized && (
                   <div
                     className={`pic-wrapper`}
                     style={{
@@ -389,7 +394,7 @@ const Join = (): JSX.Element => {
                       <img src={content.carouselImageNames[0]} alt="asd" />
                     </div>
                   </div>
-                )}
+                )} */}
                 <RightArrow onClick={handleMoveRight} />
               </div>
             </BlockNFT>
