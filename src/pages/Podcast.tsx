@@ -88,54 +88,6 @@ const AboutImageWrapperNew = styled(AboutImageWrapper)`
 
     }
 `;
-// const AboutImageWrapperNew = styled(AboutImageWrapper)`
-//   width: 75%;
-//   height: 400px;
-//   display: flex;
-//   align-items:center;
-//   justify-content:center;
-//   img {
-//     height: 350px;
-//     width: 100%;
-//     object-fit: contain;
-//   }
-//   .bg1{
-//     width:310px;
-//     position:absolute;
-//     z-index:22;
-//     left: 10%;
-//     top: -7%;
-//   }
-//   .bg2{
-//     width:410px;
-//     position:absolute;
-//     z-index:21;
-//     left:0;
-//     top:0;
-//     right:0;
-//     object-fit:contain;
-//   }
-//   @media only screen and (max-width: 640px) {
-//     margin: 0 auto;
-//     img {
-//       height: 500px;
-//     }
-
-//   }
-//   @media only screen and (max-width: 480px) {
-//     margin: 0 auto;
-//     img {
-//       height: 250px;
-//     }
-//     .bg1{
-//       width: 85%;
-//       top: -4%;
-//     }
-//     .bg2{
-//       width:100%;
-//     }
-//   }
-// `;
 function Podcast() {
   return (
     <ContainerFluid>
@@ -164,11 +116,6 @@ function Podcast() {
             src={podcastFill}
             alt="about_blob_2"
           />
-          {/* <img
-            className="bg2 absolute z-1 top-0 right-8"
-            src={podcastStroke}
-            alt="about_blob_1"
-          /> */}
           <div className="podcast-container">
           <h3 className="text-2xl text-purple-600 text-bold font-bold" style={{zIndex:100,position:'absolute',top:'60px',transform:'translateY(35%)'}}>Lastest Episode</h3>
           <iframe style={{"borderRadius":"12px",zIndex:110,position:'absolute',top:'35%',transform:'translateY(-35%)'}} src="https://open.spotify.com/embed/playlist/0ER0lIlzwvxtKp59B4d2bR?utm_source=generator" width="100%" height="80" frameBorder="0" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
