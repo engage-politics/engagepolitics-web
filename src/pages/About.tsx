@@ -7,10 +7,12 @@ container
 text-center
 mx-auto
 mt-32
+lg:mt-24
 px-0
 md:px-10
 lg:px-24
 xl:px-14
+2xl:px-36
 md:text-left
 flex-none
 md:flex
@@ -19,6 +21,7 @@ min-h-[55vh]
 z-20
 relative
 `;
+// xl:px-14
 const ContainerFluid = tw.div`
 w-full
 relative

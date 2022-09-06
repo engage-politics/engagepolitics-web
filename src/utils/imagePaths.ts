@@ -34,3 +34,7 @@ export const engageLogo = '/assets/images/engage-logo.svg';
 export const aboutBlobStroke = '/assets/images/stroke-about.svg'
 export const aboutBlob = '/assets/images/about.svg'
 export const aboutSideShape = '/assets/images/sideshape-about.svg'
+
+export const podcastStroke = '/assets/images/podcast-stroke.svg'
+export const podcastFill = '/assets/images/podcast-fill.svg'
+export const podcastSideShape = '/assets/images/podcast-sideshape.svg'
