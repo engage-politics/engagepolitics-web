@@ -16,8 +16,13 @@ flex-none
 md:flex
 md:items-center
 min-h-[55vh]
+z-20
+relative
 `;
-
+const ContainerFluid = tw.div`
+w-full
+relative
+`
 const Title = tw.div`
 text-3xl
 xsm:text-3.25xl
@@ -56,7 +61,6 @@ relative
 w-auto
 `
 const  AboutImageWrapperNew = styled(AboutImageWrapper)`
-// border:1px solid red;
 width: 75%;
 height: 400px;
 img {
@@ -72,10 +76,10 @@ img {
 }
 
 `
-// bg-green-300
-// bg-black
 function About() {
   return (
+    <ContainerFluid>
+      <img className=" absolute h-80 z-10 top-1/4" src={aboutSideShape} alt="about_background"/>
     <Container>
       <Box>
         <Title>Our Vision</Title>
@@ -104,6 +108,7 @@ function About() {
         <img className=" absolute z-1 top-0 right-8" src={aboutBlob} alt="about_blob_1" />
         </AboutImageWrapperNew>
     </Container>
+    </ContainerFluid>
   );
 }
 export default About;
