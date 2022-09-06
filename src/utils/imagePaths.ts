@@ -38,3 +38,6 @@ export const aboutSideShape = '/assets/images/sideshape-about.svg'
 export const podcastStroke = '/assets/images/podcast-stroke.svg'
 export const podcastFill = '/assets/images/podcast-fill.svg'
 export const podcastSideShape = '/assets/images/podcast-sideshape.svg'
+
+export const blogSideShape = '/assets/images/blog-sideshape.svg'
+export const blogSideShape2 = '/assets/images/blog-sideshape-2.svg'
