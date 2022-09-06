@@ -118,7 +118,7 @@ function Podcast() {
           />
           <div className="podcast-container">
           <h3 className="text-2xl text-purple-600 text-bold font-bold" style={{zIndex:100,position:'absolute',top:'60px',transform:'translateY(35%)'}}>Lastest Episode</h3>
-          <iframe style={{"borderRadius":"12px",zIndex:110,position:'absolute',top:'35%',transform:'translateY(-35%)'}} src="https://open.spotify.com/embed/playlist/0ER0lIlzwvxtKp59B4d2bR?utm_source=generator" width="100%" height="80" frameBorder="0" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe  title="Podcast Player" style={{"borderRadius":"12px",zIndex:110,position:'absolute',top:'35%',transform:'translateY(-35%)'}} src="https://open.spotify.com/embed/playlist/0ER0lIlzwvxtKp59B4d2bR?utm_source=generator" width="100%" height="80" frameBorder="0" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
         </AboutImageWrapperNew>
       </Container>
