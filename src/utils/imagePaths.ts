@@ -41,3 +41,6 @@ export const podcastSideShape = '/assets/images/podcast-sideshape.svg'
 
 export const blogSideShape = '/assets/images/blog-sideshape.svg'
 export const blogSideShape2 = '/assets/images/blog-sideshape-2.svg'
+
+export const postSideShape = '/assets/images/post-sideshape-2.svg'
+export const postSideShape2 = '/assets/images/post-sideshape-4.svg'

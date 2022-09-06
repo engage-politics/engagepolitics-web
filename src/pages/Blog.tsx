@@ -1,6 +1,7 @@
 import tw from "tailwind-styled-components";
 import { blogSideShape, blogSideShape2 } from "../utils/imagePaths";
 import { BlogPosts } from "../content/main.content";
+import {Link} from "react-router-dom";
 const Container = tw.div`
 container
 text-center
@@ -55,7 +56,7 @@ max-w-[255px] rounded-[20px] overflow-hidden shadow-lg mt-10
 min-w-[255px]
 `;
 const CardImage = tw.img`
-w-full max-h-[169px]
+w-full max-h-[169px] min-h-[169px]
 `;
 const CardBody = tw.div`
 px-6 py-4 pb-12
@@ -88,19 +89,19 @@ function Blog() {
         <Box>
           <Title className="mb-8">Blog</Title>
           <CardsWrapper>
-            {BlogPosts.map((post, index)=>{
-             return <Card key={index}>
-              <CardImage
-                src={post.image}
-                alt="post_image"
-              />
-              <CardBody>
-                <CardTitle>{post.title}</CardTitle>
-                <CardSubtitle>{post.date}</CardSubtitle>
-              </CardBody>
-            </Card>
+            {BlogPosts.map((post, index) => {
+              return (
+                <Link to={`/blog/${index}`}>
+                  <Card key={index}>
+                    <CardImage src={post.image} alt="post_image" />
+                    <CardBody>
+                      <CardTitle>{post.title}</CardTitle>
+                      <CardSubtitle>{post.date}</CardSubtitle>
+                    </CardBody>
+                  </Card>
+                </Link>
+              );
             })}
-            
           </CardsWrapper>
         </Box>
       </Container>
