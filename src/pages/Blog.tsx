@@ -2,6 +2,7 @@ import tw from "tailwind-styled-components";
 import { blogSideShape, blogSideShape2 } from "../utils/imagePaths";
 import { BlogPosts } from "../content/main.content";
 import {Link} from "react-router-dom";
+import styled from "styled-components";
 const Container = tw.div`
 container
 text-center
@@ -51,10 +52,14 @@ w-full
 justify-center
 sm:justify-between
 `;
-const Card = tw.div`
-max-w-[255px] rounded-[20px] overflow-hidden shadow-lg mt-10
+const CardFrame = tw.div`
+max-w-[255px] rounded-[20px] overflow-hidden mt-10
 min-w-[255px]
+bg-white
 `;
+const Card = styled(CardFrame)`
+box-shadow: 0 0 24px 0 rgba(227,223,255,0.5);
+`
 const CardImage = tw.img`
 w-full max-h-[169px] min-h-[169px]
 `;
@@ -62,7 +67,8 @@ const CardBody = tw.div`
 px-6 py-4 pb-12
 `;
 const CardTitle = tw.div`
-font-bold text-xl mb-2 text-sm text-ellipsis overflow-hidden whitespace-nowrap
+text-blue-500
+font-bold  text-xl mb-2 text-sm text-ellipsis overflow-hidden whitespace-nowrap text-left
 `;
 // const CardContent = tw.p`
 // text-gray-700 text-base
@@ -70,7 +76,7 @@ font-bold text-xl mb-2 text-sm text-ellipsis overflow-hidden whitespace-nowrap
 // `;
 const CardSubtitle = tw.h6`
 text-xs
-text-blue-500
+text-left
 `;
 function Blog() {
   return (
