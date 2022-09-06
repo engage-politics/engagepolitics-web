@@ -1,14 +1,21 @@
 import React from "react";
 import tw from "tailwind-styled-components";
+import styled from "styled-components";
 import { aboutBlob,aboutBlobStroke,aboutSideShape } from "../utils/imagePaths";
 const Container = tw.div`
 container
 text-center
-m-auto
-mt-20
+mx-auto
+mt-32
+px-0
+md:px-10
+lg:px-24
+xl:px-14
 md:text-left
 flex-none
 md:flex
+md:items-center
+min-h-[55vh]
 `;
 
 const Title = tw.div`
@@ -19,10 +26,11 @@ lg:text-2.5xl
 font-bold
 xsm:leading-[43px]
 text-purple-600
-mb-7
+mb-2
 max-w-sm
 sm:max-w-md
 md:max-w-full
+mx-auto
 `;
 const Paragraph = tw.div`
 text-center
@@ -35,15 +43,37 @@ leading-9
 max-w-sm
 sm:max-w-md
 md:max-w-full
+mx-auto
 `;
 const Box = tw.div`
 w-full
+md:pr-12
+xl:pr-0
 `;
 const AboutImageWrapper = tw.div`
-h-96
-w-full
+h-auto
 relative
+w-auto
 `
+const  AboutImageWrapperNew = styled(AboutImageWrapper)`
+// border:1px solid red;
+width: 75%;
+height: 400px;
+img {
+  height:350px;
+  width:100%;
+  object-fit: contain;
+}
+@media only screen and (max-width: 640px) {
+  margin: 0 auto;
+  img {
+    height:250px;
+  }
+}
+
+`
+// bg-green-300
+// bg-black
 function About() {
   return (
     <Container>
@@ -59,6 +89,7 @@ function About() {
           side as your enemy, and to view democracy through the lens of
           clickbait and hot takes.
           <br />
+          <br />
           Engage aims to change all that. Starting with simple, straightforward
           technology that keeps you updated on important policies and elections
           at the local, state, and federal levels, Engage is building tools that
@@ -68,10 +99,10 @@ function About() {
           society
         </Paragraph>
       </Box>
-      <AboutImageWrapper>
-        <img className=" absolute z-10" style={{left:'12%',top:'10%'}} src={aboutBlobStroke} alt="about_blob_2"/>
-        <img className=" absolute z-1 top-0" src={aboutBlob} alt="about_blob_1" />
-        </AboutImageWrapper>
+      <AboutImageWrapperNew>
+        <img className=" absolute z-10 right-0 top-4"  src={aboutBlobStroke} alt="about_blob_2"/>
+        <img className=" absolute z-1 top-0 right-8" src={aboutBlob} alt="about_blob_1" />
+        </AboutImageWrapperNew>
     </Container>
   );
 }
