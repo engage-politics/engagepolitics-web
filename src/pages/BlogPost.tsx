@@ -51,12 +51,12 @@ max-w-sm
 sm:max-w-md
 md:max-w-full
 mx-auto
+font-medium	
 `;
 const Box = tw.div`
 w-full
 px-2
-sm:w-11/12
-md:pr-12
+sm:w-9/12
 xl:pr-0
 `;
 const PostImage = tw.img`
@@ -66,6 +66,7 @@ max-h-[300px]
 const Subtitle = tw.h6`
 text-xs
 text-blue-500
+font-bold
 `;
 function BlogPost() {
   let { id } = useParams<{ id: any }>();
@@ -73,19 +74,19 @@ function BlogPost() {
   return (
     <ContainerFluid>
       <img
-        className=" absolute h-96 z-10 top-[20%] right-0"
+        className=" absolute h-auto z-10 top-[20%] right-0"
         src={postSideShape}
         alt="post_background"
       />
       <img
-        className=" absolute h-96 z-10 top-2/3 right-0"
+        className=" absolute h-auto z-[-1] top-2/3 right-0"
         src={postSideShape2}
         alt="post_background2"
       />
       <Container>
         <Box>
           <PostImage src={BlogPosts[pid].image} width="100%" heigth="300px"/>
-          <Subtitle className="text-left text-sm text-blue-500 mt-5">{BlogPosts[pid].date}</Subtitle>
+          <Subtitle className="text-left text-sm text-blue-500 mt-5 opacity-50">{BlogPosts[pid].date}</Subtitle>
           <Link to="/blog">
           <Subtitle className="text-left font-bold text-purple-888 mb-2">Back</Subtitle>
           </Link>

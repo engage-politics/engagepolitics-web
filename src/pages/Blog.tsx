@@ -42,7 +42,6 @@ mx-auto
 
 const Box = tw.div`
 w-full
-md:pr-12
 xl:pr-0
 `;
 const CardsWrapper = tw.div`
@@ -53,7 +52,7 @@ justify-center
 sm:justify-between
 `;
 const CardFrame = tw.div`
-max-w-[255px] rounded-[20px] overflow-hidden mt-10
+max-w-[255px] rounded-[20px] overflow-hidden mb-10
 min-w-[255px]
 bg-white
 `;
@@ -82,12 +81,12 @@ function Blog() {
   return (
     <ContainerFluid>
       <img
-        className=" absolute h-80 z-10 top-0"
+        className=" absolute h-auto z-10 top-16"
         src={blogSideShape}
         alt="blog_background"
       />
       <img
-        className=" absolute h-96 z-10 top-1/2 right-0"
+        className=" absolute h-auto z-10 top-1/2 right-0"
         src={blogSideShape2}
         alt="blog_background_2"
       />
