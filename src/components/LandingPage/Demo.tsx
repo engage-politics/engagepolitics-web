@@ -224,6 +224,11 @@ z-index:0;
   left: -7%;
 }
 `;
+const List = styled.div`
+  &>li::marker{
+    color:#A421ED;
+  }
+`;
 const AnimatedImage: React.FC<{
   index: any;
   move: any;
@@ -460,16 +465,18 @@ const Join = (): JSX.Element => {
             </FormCardBody>
           </FormCard>
           </div>
-          <div className="m-auto lg:pl-10 md:mt-12 xsm:mt-10 lg:text-left z-10">
+          <div className="m-auto lg:pl-10 md:mt-12 md:pt-7 xsm:mt-10 lg:text-left z-10">
             <h4 className=" text-left pl-4 mt-4 mb-2 md:my-0 text-3.5xl md:text-[32px] text-purple-888 font-bold leading-[1.23em]">
               Get a free demo of Engage today, and see how we:
             </h4>
-            <Paragraph className="text-left font-medium font-sans mt-4 pl-4  md:text-lg leading-relaxed sm:leading-loose">
+            <Paragraph className="text-left font-medium font-sans mt-4 pl-4   md:text-lg leading-relaxed sm:leading-loose">
+              <List>
               <li>Grow your contact list</li>
               <li>Keep your voters informed and ready to vote</li>
               <li>Motivate voters to invite their network to support you</li>
               <li>Use data to target potential voters</li>
               <li>Turn supporters into donors</li>
+              </List>
             </Paragraph>
           </div>
         </div>
