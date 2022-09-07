@@ -14,6 +14,7 @@ module.exports = {
       sans: ['Montserrat', 'source-sans-pro', 'system-ui'],
       serif: ['Prata', 'ui-sans-serif', 'system-ui'],
       digit: ['Roboto Mono', 'source-sans-pro', 'system-ui'],
+      Montserrat: ["Montserrat"],
     },
     fontSize: {
       xxs: '0.68rem', // 11px

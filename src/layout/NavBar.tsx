@@ -1,17 +1,18 @@
 import Hamburger from 'hamburger-react';
 // import Link from 'next/link';
 // import { useRouter } from 'next/router';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import React, { useCallback, useState } from 'react';
 import tw from 'tailwind-styled-components';
 import { Link as RouterLink } from 'react-router-dom';
 import Button from '../components/UI/Button/Button';
 import { engageLogo } from '../utils/imagePaths';
+import styled from 'styled-components';
 
 const Container = tw.nav`
   absolute
   // lg:relative
-  z-20
+  z-50
   top-0
   w-full    
   flex
@@ -26,7 +27,8 @@ const Container = tw.nav`
   xsm:pr-6
   lg:px-24
   xl:px-36
-`;
+  `;
+  // !font-sans
 
 const LogoLink = tw.a`
   z-10
@@ -117,7 +119,7 @@ const MenuLinks = tw.div`
 
 `;
 
-const NavAnchor = tw.a`
+const NavAnchorBase = tw.a`
   lg:w-auto
   w-full
   
@@ -130,9 +132,16 @@ const NavAnchor = tw.a`
   font-medium
   opacity-80
   cursor-pointer
-
 `;
-
+const NavAnchor = styled(NavAnchorBase)`
+  &.active {
+  color: #A422ED;
+  border-bottom: 2px solid #A421ED;
+  padding-bottom:8px;
+  position:relative;
+  top:-4px;
+}
+`
 const NavCTAButton = tw(Button)`
   justify-center
   mt-4
@@ -153,12 +162,13 @@ const NavBar = (): JSX.Element => {
     setHamburgerActive(false);
     navigate(`${path}`);
   };
-
+  const location = useLocation();
+  console.log(location.pathname)
   return (
-    <Container className={`${hamburgerActive ? 'fixed' : ''}`}>
+    <Container className={`${hamburgerActive ? 'fixed font-sans' : 'font-sans'}`}>
       <div onClick={() => redirectTo('/')} >
         <LogoLink title="Engage" onClick={() => handleClick(false)}>
-          <img src={engageLogo} alt="engage_logo"></img>
+          <img className="max-w-[150px]" src={engageLogo} alt="engage_logo"></img>
         </LogoLink>
       </div>
       <MenuToggle>
@@ -173,13 +183,13 @@ const NavBar = (): JSX.Element => {
       <MenuContainer className={`${hamburgerActive ? '' : 'hidden'}`}>
         <MenuLinks>
           {/* {candidateAdminNavLink()} */}
-          <NavAnchor onClick={() => redirectTo('/')}>Home</NavAnchor>
-          <NavAnchor onClick={() => redirectTo('/about')}>About</NavAnchor>
+          <NavAnchor className={location.pathname === "/" ? "active" : ""} onClick={() => redirectTo('/')}>Home</NavAnchor>
+          <NavAnchor className={location.pathname === "/about" ? "active" : ""} onClick={() => redirectTo('/about')}>About</NavAnchor>
           {/* <NavAnchor onClick={() => redirectTo('/help')}>Feature</NavAnchor> */}
-          <NavAnchor onClick={() => redirectTo('/podcast')}>Podcast</NavAnchor>
-          <NavAnchor onClick={() => redirectTo('/blog')}>Blog</NavAnchor> 
+          <NavAnchor className={location.pathname === "/podcast" ? "active" : ""} onClick={() => redirectTo('/podcast')}>Podcast</NavAnchor>
+          <NavAnchor className={location.pathname === "/blog" ? "active" : ""} onClick={() => redirectTo('/blog')}>Blog</NavAnchor> 
         </MenuLinks>
-        <NavCTAButton onClick={() => redirectTo('/demo')}>
+        <NavCTAButton className={location.pathname === "/demo" ? "active" : ""} onClick={() => redirectTo('/demo')}>
           Campaigns
         </NavCTAButton>
       </MenuContainer>
