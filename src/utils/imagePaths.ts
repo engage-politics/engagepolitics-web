@@ -30,3 +30,17 @@ export const downloadApple = '/assets/images/download-apple.svg';
 export const downloadGoogle = '/assets/images/download-google.svg';
 
 export const engageLogo = '/assets/images/engage-logo.svg';
+
+export const aboutBlobStroke = '/assets/images/stroke-about.svg'
+export const aboutBlob = '/assets/images/about.svg'
+export const aboutSideShape = '/assets/images/sideshape-about.svg'
+
+export const podcastStroke = '/assets/images/podcast-stroke.svg'
+export const podcastFill = '/assets/images/podcast-fill.svg'
+export const podcastSideShape = '/assets/images/podcast-sideshape.svg'
+
+export const blogSideShape = '/assets/images/blog-sideshape.svg'
+export const blogSideShape2 = '/assets/images/blog-sideshape-2.svg'
+
+export const postSideShape = '/assets/images/post-sideshape-2.svg'
+export const postSideShape2 = '/assets/images/post-sideshape-4.svg'

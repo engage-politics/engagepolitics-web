@@ -1,15 +1,14 @@
+import { Card, CardBody } from "@material-tailwind/react";
+import React, { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
+import tw from "tailwind-styled-components";
 
-import { Card, CardBody } from '@material-tailwind/react';
-import React, { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
-import tw from 'tailwind-styled-components';
+import { Carousel as content } from "../../content/main.content";
 
-import { Carousel as content } from '../../content/main.content';
-import Container from '../../layout/Container';
-import { mainshape1, mainshapeBook, stroke1 } from '../../utils/imagePaths';
+import { mainshape1, mainshapeBook, stroke1 } from "../../utils/imagePaths";
 
-import Button from '../UI/Button/Button';
-import TextInput from '../UI/Input/TextInput';
+import Button from "../UI/Button/Button";
+import TextInput from "../UI/Input/TextInput";
 
 const Label = tw.div`
   text-sm
@@ -38,21 +37,6 @@ const BlockNFT = tw.div`
   md:h-142
 `;
 
-// const Title = tw.h1`
-//   text-3xl
-//   xsm:text-3.25xl
-//   md:text-3.25xl
-//   lg:text-4xl
-//   xl:text-4xl
-//   2xl:text-[52px]
-//   font-bold
-//   xsm:leading-[63px]
-//   text-purple-600
-//   mb-7
-//   max-w-sm
-//   sm:max-w-md
-//   md:max-w-full
-// `;
 
 const Subtitle = tw.div`
   text-3xl
@@ -79,15 +63,6 @@ const Paragraph = tw.div`
   md:max-w-full
 `;
 
-// const ImageT = styled.div`
-//   border-radius: 12px;
-//   margin: 20px auto;
-
-//   @media screen and (min-width: 1280px) {
-//     margin: 0;
-//   }
-// `;
-
 const ImageC = styled.div`
   // box-shadow: 0px 12px 48px 6px rgba(75, 134, 205, 0.5);
 
@@ -99,22 +74,25 @@ const ImageC = styled.div`
   }
 
   .pic {
-    display: inline-block;
-    width: 100%;
+    display: block;
+    max-width: 210px;
     position: absolute;
+    height: 100%;
 
     img {
-      width: 50%;
-      height: 50%;
+      width: 100%;
+      height: 100%;
     }
   }
 
   .current {
-    left: 125%;
+    left: 26.5%;
+    opacity:1;
   }
 
   .current.move {
     left: 0;
+    opacity:0;
     transition: all 0.5s ease;
   }
 
@@ -127,10 +105,12 @@ const ImageC = styled.div`
     transition: all 0.5s ease;
   }
   .pic-wrapper {
-    background: lightgray;
-    left: -100%;
+    background: transparent;
     position: relative;
     border-radius: 12px;
+    height:100%;
+    display:flex;
+    justify-content:center;
   }
 
   .mask {
@@ -141,23 +121,6 @@ const ImageC = styled.div`
     border-radius: 12px;
   }
 `;
-
-// const ContributeImage = tw.div`
-//   background-repeat: no-repeat;
-//   bg-no-repeat
-//   bg-contain
-//   bg-center
-//   rounded-md
-
-//   w-64
-//   h-44
-//   xsm:w-80
-//   xsm:h-52
-//   sm:w-120
-//   sm:h-80
-//   xl:w-140
-//   xl:h-140
-// `;
 
 const Image = styled.div`
   background-image: url(${mainshape1}), url(${stroke1});
@@ -197,49 +160,6 @@ const Image = styled.div`
   }
 `;
 
-const BgFormContainer = styled.div`
-  background-image: url(${mainshapeBook});
-  background-repeat: no-repeat;
-  background-size: 70% 94%;
-  background-position: -15% 5%;
-
-  @media only screen and (max-width: 1024px) {
-    // background-size: 86% 99%;
-    // background-position: 12% -1068%;
-    background-size: 65%;
-    background-position: left 36%;
-  }
-
-  @media only screen and (max-width: 768px) {
-    // background-size: 86% 99%;
-    // background-position: 12% -1068%;
-    background-size: 80%;
-    background-position: center 3%;
-  }
-
-  @media only screen and (max-width: 640px) {
-    // background-size: 86% 99%;
-    // background-position: 12% -1068%;
-    background-size: 90%;
-    background-position: center 3%;
-  }
-
-  @media only screen and (max-width: 420px) {
-    background-image: linear-gradient(
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0)
-    );
-    background-size: 323% 199%, 350px 350px;
-    background-position: 86% 50%, 100% 95%;
-  }
-  border-radius: 12px;
-  margin: 20px auto;
-
-  @media screen and (min-width: 1280px) {
-    margin: 0;
-  }
-`;
-
 const LeftArrow = styled.div`
   height: 20px;
   width: 20px;
@@ -266,6 +186,43 @@ const FormCardBody = styled(CardBody)`
 `;
 const FormCard = styled(Card)`
   box-shadow: 5px 5px 9px 0px rgba(184, 167, 240, 0.47);
+  border-radius: 30px;
+`;
+const ContainerX = tw.div`
+container
+text-center
+mx-auto
+mt-32
+px-0
+md:px-10
+lg:px-24
+xl:px-14
+2xl:px-36
+md:text-left
+flex-none
+lg:flex
+lg:items-start
+min-h-[55vh]
+z-20
+relative
+`;
+const AnnonBack = styled.div`
+width:65%;
+background-image: url(${mainshapeBook});
+background-repeat: no-repeat;
+background-size:contain;
+background-position:center;
+height:100%;
+position:absolute;
+top:-10%;
+left:-8%;
+z-index:0;
+
+@media only screen and (max-width: 920px) {
+  width:100%;
+  top: -20%;
+  left: -7%;
+}
 `;
 const AnimatedImage: React.FC<{
   index: any;
@@ -278,15 +235,16 @@ const AnimatedImage: React.FC<{
   return (
     <div className={`pic-wrapper`}>
       <div ref={innerRef} className={`current pic ${move}`}>
-        <img key={index} src={content.carouselImageNames[index]} alt="asd" />
+        <img
+          key={index}
+          src={content.carouselImageNames[index]}
+          alt={"asd" + index}
+        />
       </div>
     </div>
   );
 };
 
-// const imageStyleContribute = {
-//   backgroundImage: `url(/assets/images/abe-lincoln-contribute.png)`,
-// };
 
 const Join = (): JSX.Element => {
   const getNextIndex = (idx: number) => {
@@ -338,14 +296,14 @@ const Join = (): JSX.Element => {
 
           setIndexes(getNextIndex(imageStateRef.current.index));
         }, 600); // same delay as in the css transition here
-      }, 2500);
+      }, 2000);
 
       return () => clearInterval(interval);
     }
-    return () => clearInterval('');
+    return () => clearInterval("");
   }, [arrowClicked]);
 
-  const move = imageState.move ? 'move' : '';
+  const move = imageState.move ? "move" : "";
   const MAX_IMAGES = content.carouselImageNames.length - 1;
   const handleMoveLeft = () => {
     const indexToMove =
@@ -359,164 +317,165 @@ const Join = (): JSX.Element => {
     setIndexes(indexToMove);
     setArrowClicked(true);
   };
-  const [index, setIndex] = React.useState(0);
-  const timeoutRef: any = React.useRef(null);
+  // const [index, setIndex] = React.useState(0);
+  // const timeoutRef: any = React.useRef(null);
 
-  function resetTimeout() {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-  }
+  // function resetTimeout() {
+  //   if (timeoutRef.current) {
+  //     clearTimeout(timeoutRef.current);
+  //   }
+  // }
 
-  React.useEffect(() => {
-    resetTimeout();
-    timeoutRef.current = setTimeout(
-      () =>
-        setIndex((prevIndex) =>
-          prevIndex === content.carouselImageNames.length - 1
-            ? 0
-            : prevIndex + 1
-        ),
-      2500
-    );
+  // React.useEffect(() => {
+  //   resetTimeout();
+  //   timeoutRef.current = setTimeout(
+  //     () =>
+  //       setIndex((prevIndex) =>
+  //         prevIndex === content.carouselImageNames.length - 1
+  //           ? 0
+  //           : prevIndex + 1
+  //       ),
+  //     2500
+  //   );
 
-    return () => {
-      resetTimeout();
-    };
-  }, [index]);
-  const [sliderInitialized, setSliderInitialized] = useState<boolean>(false);
-  useEffect(() => {
-    if (!sliderInitialized) {
-      setTimeout(() => {
-        setSliderInitialized(true);
-      }, 2800);
-    }
-  }, [sliderInitialized]);
+  //   return () => {
+  //     resetTimeout();
+  //   };
+  // }, [index]);
+  // const [sliderInitialized, setSliderInitialized] = useState<boolean>(false);
+  // useEffect(() => {
+  //   if (!sliderInitialized) {
+  //     setTimeout(() => {
+  //       setSliderInitialized(true);
+  //     }, 2800);
+  //   }
+  // }, [sliderInitialized]);
 
   return (
-    <>
-      <Container>
-        <div className="m-auto flex flex-col justify-around gap-0 lg:flex-row lg:gap-10">
-          <div className="m-auto max-w-2xl text-center lg:text-left">
-            <Subtitle className="text-3xl">
-              Reach voters where they are, before and on Election Day!
-            </Subtitle>
-            <Paragraph>
-              For little cost and no extra effort, Engage offers you a powerful
-              mobile tool to convert votes. Every vote matters!
-            </Paragraph>
-            <div className="mx-auto flex justify-center lg:block">
-              <Button $secondary>Download App</Button>
-            </div>
+    <div className="p-2">
+      <ContainerX className="mt-32 justify-center md:!items-center lg:mt-0 max-h-fit ">
+        <div className="mx-auto  text-center lg:text-left w-full xl:w-[50%] xl:ml-0 xl:pl-4">
+          <p className="font-bold font-sans text-3.25xl md:text-4xl leading-10 md:leading-snug mb-7  mx-auto text-purple-888 font-bold ">
+            Reach voters where they are, before and on Election Day!
+          </p>
+          <p className="font-sans text-purple-889 text-lg mb-7 font-medium">
+            For little cost and no extra effort, Engage offers you a powerful
+            mobile tool to convert votes. Every vote matters!
+          </p>
+          <div className="mx-auto flex justify-center lg:block">
+            <Button $secondary>Download App</Button>
           </div>
-          <Image className="xxs:p-2 xsm:p-2 sm:p-20 md:p-20 lg:p-0 xl:p-0 ">
-            {/* <ContributeImage /> */}
-            {/* {content.carouselImageNames[index]} */}
-            <ImageC>
-              <BlockNFT>
-                <div className="mask">
-                  <LeftArrow onClick={handleMoveLeft} />
-                  <AnimatedImage
-                    innerRef={imageStateRef}
-                    move={move}
-                    index={imageState.index}
-                    arrowUsed={arrowClicked}
-                  />
-                  {!sliderInitialized && (
-                    <div
-                      className={`pic-wrapper`}
-                      style={{
-                        transition: 'all 0.5s',
-                        transitionDelay: '300ms',
-                      }}
-                    >
-                      <div
-                        className={`current pic move`}
-                        style={index === 0 ? { left: '125%' } : { opacity: 0 }}
-                      >
-                        <img src={content.carouselImageNames[0]} alt="asd" />
-                      </div>
-                    </div>
-                  )}
-                  <RightArrow onClick={handleMoveRight} />
-                </div>
-              </BlockNFT>
-            </ImageC>
-          </Image>
         </div>
-      </Container>
+        <Image className="xxs:p-2 xsm:p-2 sm:p-20 md:p-20 lg:p-0 xl:p-0 ">
+          {/* <ContributeImage /> */}
+          {/* {content.carouselImageNames[index]} */}
+          <ImageC>
+            <BlockNFT>
+              <div className="mask">
+                <LeftArrow onClick={handleMoveLeft} />
+                <AnimatedImage
+                  innerRef={imageStateRef}
+                  move={move}
+                  index={imageState.index}
+                  arrowUsed={arrowClicked}
+                />
+                {/* {!sliderInitialized && (
+                  <div
+                    className={`pic-wrapper`}
+                    style={{
+                      transition: "all 0.5s",
+                      transitionDelay: "300ms",
+                    }}
+                  >
+                    <div
+                      className={`current pic move`}
+                      style={index === 0 ? { left: "125%" } : { opacity: 0 }}
+                    >
+                      <img src={content.carouselImageNames[0]} alt="asd" />
+                    </div>
+                  </div>
+                )} */}
+                <RightArrow onClick={handleMoveRight} />
+              </div>
+            </BlockNFT>
+          </ImageC>
+        </Image>
+      </ContainerX>
 
-      <BgFormContainer className="lg:pt-32">
-        <Container className="min-h-fit pt-12 pb-6 lg:mb-20 xl:pt-0">
-          <div className="m-auto flex flex-col justify-around gap-0 lg:flex-row lg:gap-10">
-            <FormCard className="mx-auto grow lg:max-w-[50%]">
-              <FormCardBody className="pt-0">
-                <div className="flex flex-col xsm:flex-row xsm:gap-5">
-                  <div className="flex-1">
-                    <Label>First Name</Label>
-                    <TextInput placeholder="Abe" />
-                  </div>
-                  <div className="flex-1">
-                    <Label>Last Name</Label>
-                    <TextInput placeholder="Lincoln" />
-                  </div>
+      {/* <BgFormContainer className="pb-2 !m-auto"> */}
+      <ContainerX className="mt-4 min-h-fit lg:mt-32 pb-6 lg:mb-20 xl:pt-0 relative">
+        <div className="flex items-center lg:justify-between flex-col lg:flex-row w-full relative">
+          <div className="im mt-12 pl-0 w-full max-w-[100%] lg:max-w-[55%]">
+          <AnnonBack />
+          <FormCard className="  w-full text-left">
+            <FormCardBody className="pt-0">
+              <div className="flex flex-col xsm:flex-row xsm:gap-5">
+                <div className="flex-1">
+                  <Label>First Name</Label>
+                  <TextInput placeholder="Abe" />
                 </div>
-                <div className="flex flex-col xsm:flex-row xsm:gap-5">
-                  <div className="flex-1">
-                    <Label>Work Email</Label>
-                    <TextInput placeholder="Abe.Lincoln@us.gov" />
-                  </div>
-                  <div className="flex-1">
-                    <Label>Phone</Label>
-                    <TextInput placeholder="+1(123) 123-1234" />
-                  </div>
+                <div className="flex-1">
+                  <Label>Last Name</Label>
+                  <TextInput placeholder="Lincoln" />
                 </div>
-                <div className="flex flex-col xsm:flex-row xsm:gap-5">
-                  <div className="flex-1">
-                    <Label>Organization Name</Label>
-                    <TextInput placeholder="US GOV" />
-                  </div>
+              </div>
+              <div className="flex flex-col xsm:flex-row xsm:gap-5">
+                <div className="flex-1">
+                  <Label>Work Email</Label>
+                  <TextInput placeholder="Abe.Lincoln@us.gov" />
                 </div>
-                <div className="flex flex-col xsm:flex-row xsm:gap-5">
-                  <div className="flex-1">
-                    <Label>Organization Type</Label>
-                    <TextInput placeholder="Government" />
-                  </div>
+                <div className="flex-1">
+                  <Label>Phone</Label>
+                  <TextInput placeholder="+1(123) 123-1234" />
                 </div>
-                <div className="flex flex-col xsm:flex-row xsm:gap-5">
-                  <div className="flex-1">
-                    <Label>Website</Label>
-                    <TextInput placeholder="us.gov" />
-                  </div>
+              </div>
+              <div className="flex flex-col xsm:flex-row xsm:gap-5">
+                <div className="flex-1">
+                  <Label>Organization Name</Label>
+                  <TextInput placeholder="US GOV" />
                 </div>
-                <div className="flex flex-col xsm:flex-row xsm:gap-5">
-                  <div className="flex-1">
-                    <Label>Why are you interested in Engage?</Label>
-                    <TextInput placeholder="..." />
-                  </div>
+              </div>
+              <div className="flex flex-col xsm:flex-row xsm:gap-5">
+                <div className="flex-1">
+                  <Label>Organization Type</Label>
+                  <TextInput placeholder="Government" />
                 </div>
+              </div>
+              <div className="flex flex-col xsm:flex-row xsm:gap-5">
+                <div className="flex-1">
+                  <Label>Website</Label>
+                  <TextInput placeholder="us.gov" />
+                </div>
+              </div>
+              <div className="flex flex-col xsm:flex-row xsm:gap-5">
+                <div className="flex-1">
+                  <Label>Why are you interested in Engage?</Label>
+                  <TextInput placeholder="..." />
+                </div>
+              </div>
 
-                <Button className="mt-5 !px-14" $secondary>
-                  Book Demo
-                </Button>
-              </FormCardBody>
-            </FormCard>
-            <div className="m-auto max-w-2xl flex-1 sm:pl-10 md:mt-12 xsm:mt-10  lg:text-left">
-              <Subtitle className="xsm:leading-10">
-                Get a free demo of Engage today, and see how we:
-              </Subtitle>
-              <Paragraph>
-                <li>Grow your contact list</li>
-                <li>Keep your voters informed and ready to vote</li>
-                <li>Motivate voters to invite their network to support you</li>
-                <li>Use data to target potential voters</li>
-                <li>Turn supporters into donors</li>
-              </Paragraph>
-            </div>
+              <Button className="mt-5 !px-14" $secondary>
+                Book Demo
+              </Button>
+            </FormCardBody>
+          </FormCard>
           </div>
-        </Container>
-      </BgFormContainer>
-    </>
+          <div className="m-auto lg:pl-10 md:mt-12 xsm:mt-10 lg:text-left z-10">
+            <h4 className=" text-left pl-4 mt-4 mb-2 md:my-0 text-3.5xl md:text-[32px] text-purple-888 font-bold leading-[1.23em]">
+              Get a free demo of Engage today, and see how we:
+            </h4>
+            <Paragraph className="text-left font-medium font-sans mt-4 pl-4  md:text-lg leading-relaxed sm:leading-loose">
+              <li>Grow your contact list</li>
+              <li>Keep your voters informed and ready to vote</li>
+              <li>Motivate voters to invite their network to support you</li>
+              <li>Use data to target potential voters</li>
+              <li>Turn supporters into donors</li>
+            </Paragraph>
+          </div>
+        </div>
+      </ContainerX>
+      {/* </BgFormContainer> */}
+    </div>
   );
 };
 

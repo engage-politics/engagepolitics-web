@@ -133,46 +133,17 @@ const NavAnchor = tw.a`
 
 `;
 
-// const UserNavAnchor = tw(NavAnchor)`
-//   lg:hidden
-// `;
-
 const NavCTAButton = tw(Button)`
   justify-center
   mt-4
   lg:mt-0
 `;
 
-// const ProfileMenu = tw.div`
-//   text-blue-500
-//   items-center
-//   font-bold
-//   text-xl
-//   lg:flex
-//   hidden
-// `;
-
-// const UserInitials = tw.div`
-//   cursor-pointer
-//   text-blue-500
-// `;
-
-// const LogoutOption = tw.div`
-//   text-red-500
-//   cursor-pointer
-//   text-base
-//   pl-5
-//   opacity-80
-//   font-normal
-// `;
-
-// const DROPDOWN_OPTIONS = ['Edit Profile', 'Logout'];
 
 const NavBar = (): JSX.Element => {
   const navigate = useNavigate();
   const [hamburgerActive, setHamburgerActive] = useState(false);
 
-  // const pathName = router.pathname;
 
   const handleClick = useCallback((toggled: boolean) => {
     setHamburgerActive(toggled);
@@ -183,26 +154,13 @@ const NavBar = (): JSX.Element => {
     navigate(`${path}`);
   };
 
-  // const candidateAdminNavLink = () => {
-  //   return (
-  //     <NavAnchor
-  //       className={`nav-menu-items ${
-  //         pathName === '/candidates' ? 'font-bold' : ''
-  //       }`}
-  //       onClick={() => redirectTo('/candidates')}
-  //     >
-  //       Home
-  //     </NavAnchor>
-  //   );
-  // };
-
   return (
     <Container className={`${hamburgerActive ? 'fixed' : ''}`}>
-      <a onClick={() => redirectTo('/')} >
+      <div onClick={() => redirectTo('/')} >
         <LogoLink title="Engage" onClick={() => handleClick(false)}>
-          <img src={engageLogo}></img>
+          <img src={engageLogo} alt="engage_logo"></img>
         </LogoLink>
-      </a>
+      </div>
       <MenuToggle>
         <MenuTitle>{hamburgerActive ? 'Close' : 'Menu'}</MenuTitle>
         <Hamburger
@@ -216,13 +174,13 @@ const NavBar = (): JSX.Element => {
         <MenuLinks>
           {/* {candidateAdminNavLink()} */}
           <NavAnchor onClick={() => redirectTo('/')}>Home</NavAnchor>
-          {/* <NavAnchor onClick={() => redirectTo('/help')}>About</NavAnchor>
-          <NavAnchor onClick={() => redirectTo('/help')}>Feature</NavAnchor>
-          <NavAnchor onClick={() => redirectTo('/')}>Podcast</NavAnchor>
-          <NavAnchor onClick={() => redirectTo('/')}>Blog</NavAnchor> */}
+          <NavAnchor onClick={() => redirectTo('/about')}>About</NavAnchor>
+          {/* <NavAnchor onClick={() => redirectTo('/help')}>Feature</NavAnchor> */}
+          <NavAnchor onClick={() => redirectTo('/podcast')}>Podcast</NavAnchor>
+          <NavAnchor onClick={() => redirectTo('/blog')}>Blog</NavAnchor> 
         </MenuLinks>
         <NavCTAButton onClick={() => redirectTo('/demo')}>
-        For Campaigns
+          Campaigns
         </NavCTAButton>
       </MenuContainer>
     </Container>

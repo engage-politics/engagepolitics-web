@@ -241,12 +241,19 @@ const Image4 = styled.div`
 const Image6 = styled.div`
   background-image: url(${mainshape6}), url(${stroke6});
   background-repeat: no-repeat;
-  background-size: 86% 99%, 102% 90%;
-  background-position: 63% 72%, 3% 105%;
-
+  // background-size: 86% 99%, 102% 90%;
+  // background-position: 63% 72%, 3% 105%;
+  background-size: 101% 100%,104% 95%;
+  background-position: 2em 0em,3% 105%;
+  padding: 3em;
+  margin: -3em;
   @media only screen and (max-width: 1024px) {
-    background-size: 86% 99%, 102% 90%;
-    background-position: 63% 72%, 3% 105%;
+    // background-size: 86% 99%, 102% 90%;
+    // background-position: 63% 72%, 3% 105%;
+    background-size: 101% 100%,104% 95%;
+    background-position: 2em 0em,3% 105%;
+    padding: 4em;
+    margin: -4em;
   }
   @media only screen and (max-width: 768px) {
     background-size: 86% 99%, 102% 90%;
@@ -288,8 +295,8 @@ const ContributeImage = tw.div`
 
   w-64
   h-44
-  xsm:w-80
-  xsm:h-52
+  xsm:w-96
+  xsm:h-80
   sm:w-120
   sm:h-80
   xl:w-140
@@ -320,9 +327,9 @@ const LandingPage = (): JSX.Element => {
 
   return (
     <LandingContainer>
-      <Container className="flex min-h-screen">
+      <Container className="flex min-h-screen xsm:px-1 xxs:px-1">
         <div className="m-auto flex flex-col justify-around gap-0 lg:flex-row lg:gap-10">
-          <div className="m-auto max-w-xl lg:text-left">
+          <div className="w-full px-4 mx-auto md:px-0 md:m-auto md:max-w-xl lg:text-left">
             <Title>
               Democracy needs engaged citizens more than ever before. We’re here
               to help.
@@ -340,14 +347,14 @@ const LandingPage = (): JSX.Element => {
               <img src={downloadGoogle} />
             </div>
           </div>
-          <Image className="xxs:py-24 xxs:px-6 xsm:p-20 sm:p-20 md:p-20 lg:p-0 xl:p-0">
+          <Image className="xxs:py-24 xxs:px-6 xsm:p-4 sm:p-20 md:p-20 lg:p-0 xl:p-0">
             <ContributeImage />
           </Image>
         </div>
       </Container>
 
-      <Container className="flex">
-        <div className="m-auto  flex flex-col justify-around gap-0 lg:flex-row lg:gap-10">
+      <Container className="flex  xsm:px-1 xxs:px-1">
+        <div className="m-auto  flex flex-col-reverse justify-around gap-0 lg:flex-row lg:gap-10">
           <Image2 className="xxs:py-24 xxs:px-6 xsm:p-20 sm:p-24 md:p-24 lg:p-0 xl:p-0">
             <ContributeImage />
           </Image2>
@@ -360,7 +367,7 @@ const LandingPage = (): JSX.Element => {
         </div>
       </Container>
 
-      <Container className="flex">
+      <Container className="flex  xsm:px-1 xxs:px-1">
         <div className="m-auto flex flex-col justify-around gap-0 lg:flex-row lg:gap-10">
           <div className="m-auto max-w-xl  lg:text-left">
             <Title>
@@ -373,8 +380,8 @@ const LandingPage = (): JSX.Element => {
         </div>
       </Container>
 
-      <Container className="flex">
-        <div className="m-auto flex flex-col justify-around gap-0 lg:flex-row lg:gap-10">
+      <Container className="flex  xsm:px-1 xxs:px-1">
+        <div className="m-auto flex flex-col-reverse justify-around gap-0 lg:flex-row lg:gap-10">
           <Image4 className="xxs:py-24 xxs:px-6 xsm:p-20 sm:p-20 md:p-20 lg:p-0 xl:p-0">
             <ContributeImage />
           </Image4>
@@ -384,21 +391,21 @@ const LandingPage = (): JSX.Element => {
         </div>
       </Container>
 
-      <Container className="flex">
+      <Container className="flex  xsm:px-1 xxs:px-1">
         <div className="m-auto flex flex-col justify-around gap-0 lg:flex-row lg:gap-10">
           <div className="m-auto max-w-xl  lg:text-left">
             <Title>We make it easy to mobilize your friends and family</Title>
           </div>
-          <Image3 className="xxs:py-24 xxs:px-6 xsm:p-20 sm:p-20 md:p-20 lg:p-0 xl:p-0">
+          <Image3 className="xxs:py-24 xxs:p-4 xsm:p-4 sm:p-20 md:p-20 lg:p-0 xl:p-0">
             <ContributeImage />
           </Image3>
         </div>
       </Container>
 
-      <Container className="flex pt-12 pb-6 lg:mb-20 xl:pt-0">
-        <div className="m-auto flex flex-col justify-around gap-0 lg:flex-row lg:gap-10">
+      <Container className="flex pt-12 pb-6 lg:mb-20 xl:pt-0  xsm:px-1 xxs:px-1">
+        <div className="m-auto flex flex-col-reverse justify-around gap-0 lg:flex-row lg:gap-10">
           <Image6 className="xxs:py-24 xxs:px-6 xsm:p-20 sm:p-20 md:p-20 lg:p-0 xl:p-0">
-            <Card className="mx-auto xxs:w-64 xsm:w-72 sm:w-96 md:w-96">
+            <Card className="mx-auto xxs:w-64 xsm:w-72 sm:w-96 md:w-96 rounded-[30px]" style={{boxShadow:" 0 0 34px 0 rgba(184,167,240,0.47)"}}>
               <CardBody>
                 <Label>Name</Label>
                 <TextInput placeholder="Abe" />
