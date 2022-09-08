@@ -85,7 +85,7 @@ function About() {
       <img className=" absolute h-80 z-10 top-1/4" src={aboutSideShape} alt="about_background"/>
     <Container>
       <Box>
-        <Title>Our Vision</Title>
+        <Title className="mb-8">Our Vision</Title>
         <Paragraph>
           Engage is a laboratory for democracy. Technology has radically changed
           every aspect of our lives, including politics and civic engagement.
