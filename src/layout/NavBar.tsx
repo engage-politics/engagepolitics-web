@@ -186,8 +186,8 @@ const NavBar = (): JSX.Element => {
           <NavAnchor className={location.pathname === "/" ? "active" : ""} onClick={() => redirectTo('/')}>Home</NavAnchor>
           <NavAnchor className={location.pathname === "/about" ? "active" : ""} onClick={() => redirectTo('/about')}>About</NavAnchor>
           {/* <NavAnchor onClick={() => redirectTo('/help')}>Feature</NavAnchor> */}
-          <NavAnchor className={location.pathname === "/podcast" ? "active" : ""} onClick={() => redirectTo('/podcast')}>Podcast</NavAnchor>
-          <NavAnchor className={location.pathname === "/blog" ? "active" : ""} onClick={() => redirectTo('/blog')}>Blog</NavAnchor> 
+          {/* <NavAnchor className={location.pathname === "/podcast" ? "active" : ""} onClick={() => redirectTo('/podcast')}>Podcast</NavAnchor>
+          <NavAnchor className={location.pathname === "/blog" ? "active" : ""} onClick={() => redirectTo('/blog')}>Blog</NavAnchor>  */}
         </MenuLinks>
         <NavCTAButton className={location.pathname === "/demo" ? "active" : ""} onClick={() => redirectTo('/demo')}>
           For Campaigns
