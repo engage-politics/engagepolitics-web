@@ -190,7 +190,7 @@ const NavBar = (): JSX.Element => {
           <NavAnchor className={location.pathname === "/blog" ? "active" : ""} onClick={() => redirectTo('/blog')}>Blog</NavAnchor> 
         </MenuLinks>
         <NavCTAButton className={location.pathname === "/demo" ? "active" : ""} onClick={() => redirectTo('/demo')}>
-          Campaigns
+          For Campaigns
         </NavCTAButton>
       </MenuContainer>
     </Container>
