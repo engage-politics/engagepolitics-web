@@ -58,7 +58,7 @@ mx-auto
 const Box = tw.div`
 w-full
 md:pr-12
-xl:pr-0
+xl:pr-12
 `;
 const AboutImageWrapper = tw.div`
 h-auto
@@ -66,8 +66,10 @@ relative
 w-auto
 `;
 const AboutImageWrapperNew = styled(AboutImageWrapper)`
+  // width: 80%;
   width: 75%;
-  max-width: 430px;
+  max-width: 630px;
+  // max-width: 430px;
   margin:0 auto;
   height:430px;
   position:relative;
@@ -98,7 +100,7 @@ function Podcast() {
       />
       <Container>
         <Box>
-          <Title>Listen in to Explore Democracy</Title>
+          <Title className="mb-8">Listen in to Explore Democracy</Title>
           <Paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
             luctus ac risus elementum semper. Maecenas dapibus commodo accumsan.
