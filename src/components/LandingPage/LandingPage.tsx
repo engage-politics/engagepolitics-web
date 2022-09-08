@@ -313,8 +313,15 @@ const ImageWrapper = styled.div`
   }
   @media only screen and (max-width: 1024px) {
     .phone.phone-sec-2 {
-      max-height: 375px;
+      // max-height: 375px;
+      // max-width: 200px;
+      max-height: 400px;
       max-width: 200px;
+      left: 15px;
+    }
+    .phone.ph-sec-3{
+      max-width: 200px;
+      max-height: 400px;
     }
   }
   @media only screen and (max-width: 920px) {
@@ -322,8 +329,16 @@ const ImageWrapper = styled.div`
       max-width: 200px;
     }
     .phone.phone-sec-2 {
-      max-height: 316px;
-      max-width: 171px;
+      // max-height: 316px;
+      // max-width: 171px;
+    }
+    .ph-sec-4{
+      max-width: 200px;
+      max-height: 400px;
+    }
+    .image-inner-wrapper.sec-4{
+      width: 90%;
+      margin: 0 auto;
     }
   }
 
@@ -386,7 +401,7 @@ const LandingPage = (): JSX.Element => {
       {/* SECTION - 2 */}
       <ContainerFluid>
         <img className="absolute right-0" src={sideshape2} alt="" />
-        <ContainerNew className="mt-24 md:mt-64  flex flex-col-reverse md:flex-row justify-around">
+        <ContainerNew className="mt-24 md:mt-56  flex flex-col-reverse md:flex-row justify-around">
           <ImageWrapper className="mt-16 px-4 md:px-0 md:pr-16 md:mt-0 h-full relative">
             <div className="image-inner-wrapper relative  w-m-[500px]">
               <img
@@ -407,7 +422,7 @@ const LandingPage = (): JSX.Element => {
             </div>
           </ImageWrapper>
           <div className="m-auto lg:text-left w-full">
-            <Title className="!m-0">
+            <Title className="!m-0 mr-0 w-full max-w-full">
               Find your district, <br></br> candidates & voting<br></br>{" "}
               location
             </Title>
@@ -423,7 +438,7 @@ const LandingPage = (): JSX.Element => {
               Elections synced to your calendar so you never miss a vote!
             </Title>
           </div>
-          <ImageWrapper className="scale-[0.85] xsm:scale-1 mt-16  md:mt-0 h-full relative">
+          <ImageWrapper className=" xsm:scale-1 mt-16  md:mt-0 h-full relative">
             <div className="image-inner-wrapper relative  w-m-[500px]">
               <img
                 src={stroke3}
@@ -435,14 +450,14 @@ const LandingPage = (): JSX.Element => {
                 alt=""
                 className="fill_layer_2 absolute top-[5%] w-fit"
               />
-              <img src={phone3} alt="" className="phone top-0 absolute" />
+              <img src={phone3} alt="" className="phone ph-sec-3 top-0 absolute" />
             </div>
           </ImageWrapper>
         </ContainerNew>
       </ContainerFluid>
       {/* SECTION - 4 */}
       <ContainerFluid>
-      <img className="absolute right-0" src={sideshape4} alt="" />
+        <img className="absolute right-0" src={sideshape4} alt="" />
         <ContainerNew className=" md:mt-64  flex flex-col-reverse md:flex-row justify-around">
           <ImageWrapper className="mt-16 px-4 md:px-0 md:pr-16 md:mt-0 h-full relative">
             <div className="image-inner-wrapper relative  w-m-[500px]">
@@ -476,11 +491,11 @@ const LandingPage = (): JSX.Element => {
         <ContainerNew className="mt-64 md:mt-24  flex flex-col md:flex-row justify-around">
           <div className="m-auto  w-full px-4 md:px-0 md:pr-16">
             <Title className="m-0 text-center md:text-right">
-            We make it easy to mobilize your friends and family
+              We make it easy to mobilize your friends and family
             </Title>
           </div>
-          <ImageWrapper className="scale-[0.85] xsm:scale-1 mt-16  md:mt-0 h-full relative">
-            <div className="image-inner-wrapper relative  w-m-[500px]">
+          <ImageWrapper className=" mt-16  md:mt-0 h-full relative">
+            <div className="image-inner-wrapper sec-4 relative  w-m-[500px]">
               <img
                 src={stroke3}
                 alt=""
@@ -491,17 +506,24 @@ const LandingPage = (): JSX.Element => {
                 alt=""
                 className="fill_layer_2 absolute top-[5%] w-fit"
               />
-              <img src={phone3} alt="" className="phone top-0 absolute" />
+              <img src={phone3} alt="" className="phone ph-sec-4 top-0 absolute" />
             </div>
           </ImageWrapper>
         </ContainerNew>
       </ContainerFluid>
       {/* SECTION - 5 */}
       <ContainerFluid>
-        <img className="absolute right-0" src={sideshape6} alt="" /> 
+        <img className="absolute right-0" src={sideshape6} alt="" />
         <ContainerNew className="mt-24 md:mt-24  flex flex-col-reverse md:flex-row justify-around mb-32">
-          <Image6 className="xxs:py-24 xxs:px-6 xsm:p-20 sm:p-20 md:p-20 lg:p-0 xl:p-0">
-            <Card className="mx-auto xxs:w-64 xsm:w-72 sm:w-96 md:w-96 rounded-[30px]" style={{boxShadow:" 0 0 34px 0 rgba(184,167,240,0.47)"}}>
+          <div className="form-wrapper relative ">
+            <div className="form-background ">
+              <img className="relative w-full z-20 max-w-[400px] xl:max-w-none"  src={mainshape6} alt="" />
+              <img className="absolute w-full top-[15%] z-10" src={stroke6} alt="" />
+            </div>
+            <Card
+              className="absolute z-30  top-[55%] left-[50%] mx-auto xxs:w-64 xsm:w-72 sm:w-80 md:w-80 lg:w-80 xl:w-96 rounded-[30px]"
+              style={{ boxShadow: " 0 0 34px 0 rgba(184,167,240,0.47)", transform:'translate(-50%,-50%)' }}
+            >
               <CardBody>
                 <Label>Name</Label>
                 <TextInput placeholder="Abe" />
@@ -512,126 +534,17 @@ const LandingPage = (): JSX.Element => {
                 </Button>
               </CardBody>
             </Card>
-          </Image6>
-          {/* <div className="m-auto lg:text-left w-full">
-            <Title className="m-auto max-w-xl flex-1">
-              Be a more active citizen, right from your smartphone!
-            </Title>
-            <Paragraph>
-              Please sign up here for early access to our app, and join the
-              movement for a better democracy today!
-            </Paragraph>
-          </div> */}
-           <div className="m-auto max-w-xl flex-1 lg:text-left md:pl-28">
+          </div>
+          <div className="m-auto max-w-xl flex-1 lg:text-left pl-0 md:pl-8">
+            {/* md:pl-28 */}
             <Title>Stay informed</Title>
             <Paragraph>
               Please sign up here for early access to our app, and join the
               movement for a better democracy today!
             </Paragraph>
-          </div> 
+          </div>
         </ContainerNew>
       </ContainerFluid>
-      {/* <LandingContainer>
-      <Container className="flex min-h-screen xsm:px-1 xxs:px-1">
-        <div className="m-auto flex flex-col justify-around gap-0 lg:flex-row lg:gap-10">
-          <div className="w-full px-4 mx-auto md:px-0 md:m-auto md:max-w-xl lg:text-left">
-            <Title>
-              Democracy needs engaged citizens more than ever before. We’re here
-              to help.
-            </Title>
-            <Paragraph>
-              Participating in democracy has never been more important, but it
-              seems harder than ever to keep up with everything. Designed by
-              policy experts and software engineers who care deeply about
-              democracy and civic health, the Engage app gives you all the
-              election information you need in five minutes or less, and helps
-              you get your friends and family to the polls as well!
-            </Paragraph>
-            <div className=" flex ">
-              <img className="mr-3" src={downloadApple} />
-              <img src={downloadGoogle} />
-            </div>
-          </div>
-          <Image className="xxs:py-24 xxs:px-6 xsm:p-4 sm:p-20 md:p-20 lg:p-0 xl:p-0">
-            <ContributeImage />
-          </Image>
-        </div>
-      </Container>
-
-      <Container className="flex  xsm:px-1 xxs:px-1">
-        <div className="m-auto  flex flex-col-reverse justify-around gap-0 lg:flex-row lg:gap-10">
-          <Image2 className="xxs:py-24 xxs:px-6 xsm:p-20 sm:p-24 md:p-24 lg:p-0 xl:p-0">
-            <ContributeImage />
-          </Image2>
-          <div className="m-auto max-w-xl lg:text-left">
-            <Title>
-              Find your district, <br></br> candidates & voting<br></br>{' '}
-              location
-            </Title>
-          </div>
-        </div>
-      </Container>
-
-      <Container className="flex  xsm:px-1 xxs:px-1">
-        <div className="m-auto flex flex-col justify-around gap-0 lg:flex-row lg:gap-10">
-          <div className="m-auto max-w-xl  lg:text-left">
-            <Title>
-              Elections synced to your calendar so you never miss a vote!
-            </Title>
-          </div>
-          <Image3 className="xxs:py-24 xxs:px-6 xsm:p-20 sm:p-20 md:p-20 lg:p-0 xl:p-0">
-            <ContributeImage />
-          </Image3>
-        </div>
-      </Container>
-
-      <Container className="flex  xsm:px-1 xxs:px-1">
-        <div className="m-auto flex flex-col-reverse justify-around gap-0 lg:flex-row lg:gap-10">
-          <Image4 className="xxs:py-24 xxs:px-6 xsm:p-20 sm:p-20 md:p-20 lg:p-0 xl:p-0">
-            <ContributeImage />
-          </Image4>
-          <div className="m-auto max-w-xl flex-1 lg:text-left">
-            <Title>Be a more active citizen, right from your smartphone!</Title>
-          </div>
-        </div>
-      </Container>
-
-      <Container className="flex  xsm:px-1 xxs:px-1">
-        <div className="m-auto flex flex-col justify-around gap-0 lg:flex-row lg:gap-10">
-          <div className="m-auto max-w-xl  lg:text-left">
-            <Title>We make it easy to mobilize your friends and family</Title>
-          </div>
-          <Image3 className="xxs:py-24 xxs:p-4 xsm:p-4 sm:p-20 md:p-20 lg:p-0 xl:p-0">
-            <ContributeImage />
-          </Image3>
-        </div>
-      </Container>
-
-      <Container className="flex pt-12 pb-6 lg:mb-20 xl:pt-0  xsm:px-1 xxs:px-1">
-        <div className="m-auto flex flex-col-reverse justify-around gap-0 lg:flex-row lg:gap-10">
-          <Image6 className="xxs:py-24 xxs:px-6 xsm:p-20 sm:p-20 md:p-20 lg:p-0 xl:p-0">
-            <Card className="mx-auto xxs:w-64 xsm:w-72 sm:w-96 md:w-96 rounded-[30px]" style={{boxShadow:" 0 0 34px 0 rgba(184,167,240,0.47)"}}>
-              <CardBody>
-                <Label>Name</Label>
-                <TextInput placeholder="Abe" />
-                <Label>Email</Label>
-                <TextInput placeholder="Abe.Lincoln@us.gov" />
-                <Button className="mt-5 !px-14" $secondary>
-                  Sign Up
-                </Button>
-              </CardBody>
-            </Card>
-          </Image6>
-          <div className="m-auto max-w-xl flex-1 lg:text-left">
-            <Title>Stay informed</Title>
-            <Paragraph>
-              Please sign up here for early access to our app, and join the
-              movement for a better democracy today!
-            </Paragraph>
-          </div>
-        </div>
-      </Container> 
-    </LandingContainer>*/}
     </ContainerFluid>
   );
 };
