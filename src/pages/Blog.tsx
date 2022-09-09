@@ -46,13 +46,16 @@ xl:pr-0
 `;
 const CardsWrapper = tw.div`
 flex
+flex-col
 flex-wrap
 w-full
+items-center
 justify-center
 sm:justify-between
+md:flex-row
 `;
 const CardFrame = tw.div`
-max-w-[255px] rounded-[20px] overflow-hidden mb-10
+max-w-[90%] md:max-w-[48%] lg:max-w-[21%] rounded-[20px] overflow-hidden mb-10
 min-w-[255px]
 bg-white
 `;
@@ -60,10 +63,10 @@ const Card = styled(CardFrame)`
 box-shadow: 0 0 24px 0 rgba(227,223,255,0.5);
 `
 const CardImage = tw.img`
-w-full max-h-[169px] min-h-[169px]
+w-full max-h-[169px] min-h-[200px] md:min-h-[169px]
 `;
 const CardBody = tw.div`
-px-6 py-4 pb-12
+px-6 py-4 pb-16 md:pb-12
 `;
 const CardTitle = tw.div`
 text-blue-500
@@ -96,15 +99,15 @@ function Blog() {
           <CardsWrapper>
             {BlogPosts.map((post, index) => {
               return (
-                <Link to={`/blog/${index}`}>
-                  <Card key={index}>
+                <Card key={index}>
+                    <Link to={`/blog/${index}`} className="w-fit">
                     <CardImage src={post.image} alt="post_image" />
                     <CardBody>
                       <CardTitle>{post.title}</CardTitle>
                       <CardSubtitle>{post.date}</CardSubtitle>
                     </CardBody>
-                  </Card>
                 </Link>
+                  </Card>
               );
             })}
           </CardsWrapper>
