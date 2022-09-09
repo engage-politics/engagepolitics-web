@@ -1,14 +1,16 @@
-import { Card, CardBody } from "@material-tailwind/react";
+
 import React, { useEffect, useRef, useState } from "react";
+import { Formik } from 'formik';
+import { useFormik, Form, FormikProvider, ErrorMessage } from 'formik';
 import styled from "styled-components";
 import tw from "tailwind-styled-components";
-
+import { Card, CardBody } from "@material-tailwind/react";
 import { Carousel as content } from "../../content/main.content";
-
+import * as Yup from "yup";
 import { mainshape1, mainshapeBook, stroke1 } from "../../utils/imagePaths";
-
 import Button from "../UI/Button/Button";
 import TextInput from "../UI/Input/TextInput";
+import axios from "axios";
 
 const Label = tw.div`
   text-sm
@@ -159,6 +161,8 @@ const Image = styled.div`
   }
 `;
 
+
+
 const LeftArrow = styled.div`
   height: 20px;
   width: 20px;
@@ -229,6 +233,17 @@ const List = styled.div`
   }
 `;
 
+const TextFieldError = styled(ErrorMessage)`
+color: #e63946;
+font-size: 0.8rem;
+margin-top: 0.3rem;
+`;
+
+const Alert = styled.div`
+
+`;
+
+
 const Truck = styled.div`
   img.ph {
     width: 100%;
@@ -239,16 +254,19 @@ const Truck = styled.div`
     z-index:1;
   }
 `;
+
 const Join = (): JSX.Element => {
   const [arrowClicked, setArrowClicked] = useState<boolean>(false);
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [successAlert, setSuccessAlert] = React.useState(true);
+
 
   const slideNext = (e: any) => {
     setCurrentSlide((prev) => {
       setArrowClicked(true);
       return prev + 1 === content.carouselImageNames.length ? 0 : currentSlide + 1;
     });
-    
+
   };
   const slidePrev = (e: any) => {
     console.log('l clicked')
@@ -258,16 +276,63 @@ const Join = (): JSX.Element => {
     });
   };
   React.useEffect(() => {
-    if(!arrowClicked){
-    const intervalId = setInterval(() => {
-      setCurrentSlide((prev) => {
-        return prev + 1 === content.carouselImageNames.length ? 0 : prev + 1;
-      });
-    }, 2000);
-    return () => {
-      clearInterval(intervalId);
-    }}
+    if (!arrowClicked) {
+      const intervalId = setInterval(() => {
+        setCurrentSlide((prev) => {
+          return prev + 1 === content.carouselImageNames.length ? 0 : prev + 1;
+        });
+      }, 2000);
+      return () => {
+        clearInterval(intervalId);
+      }
+    }
   }, [arrowClicked]);
+
+  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+
+  const DemoSchema = Yup.object().shape({
+    firstName: Yup.string().required("First Name is required"),
+    lastName: Yup.string().required("Last Name is required"),
+    workEmail: Yup.string().required("Email is required"),
+    phone: Yup.string().matches(phoneRegExp, 'Phone number is not valid').required("Phone is required"),
+    organizationName: Yup.string().required("Organization Name is required"),
+    organizationType: Yup.string().required("Organization Type code is required"),
+    website: Yup.string().required("Website is required"),
+    whyInterested: Yup.string().required("Reason of your interest is required"),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      workEmail: '',
+      phone: '',
+      organizationName: '',
+      organizationType: '',
+      website: '',
+      whyInterested: '',
+    },
+    validationSchema: DemoSchema,
+    onSubmit: (values, { setSubmitting, resetForm }) => {
+      console.log('asdasdasd', values)
+      axios.post('https://sheet.best/api/sheets/5b0e0b79-45f1-4078-bc5d-ea00753de28c', formik.values)
+        .then(response => {
+          if (response.status == 200) {
+            setSubmitting(false)
+            setSuccessAlert(false)
+            resetForm()
+            setTimeout(() => {
+              setSuccessAlert(true)
+          }, 3000);
+          }
+          console.log(response);
+        })
+      // submitReviewHandler(values);
+    },
+  });
+
+  const { errors, touched, handleBlur, values, handleSubmit, isSubmitting, getFieldProps, isValid, dirty } = formik;
+
   return (
     <div className="p-2">
       <ContainerX className="mt-32 justify-center md:!items-center lg:mt-0 max-h-fit relative z-30 ">
@@ -307,58 +372,86 @@ const Join = (): JSX.Element => {
         <div className="flex items-center lg:justify-between flex-col lg:flex-row w-full relative">
           <div className="im mt-12 pl-0 w-full max-w-[100%] lg:max-w-[55%]">
             <AnnonBack />
+
+
             <FormCard className="  w-full text-left">
               <FormCardBody className="pt-0">
-                <div className="flex flex-col xsm:flex-row xsm:gap-5">
-                  <div className="flex-1">
-                    <Label>First Name</Label>
-                    <TextInput placeholder="Abe" />
-                  </div>
-                  <div className="flex-1">
-                    <Label>Last Name</Label>
-                    <TextInput placeholder="Lincoln" />
-                  </div>
-                </div>
-                <div className="flex flex-col xsm:flex-row xsm:gap-5">
-                  <div className="flex-1">
-                    <Label>Work Email</Label>
-                    <TextInput placeholder="Abe.Lincoln@us.gov" />
-                  </div>
-                  <div className="flex-1">
-                    <Label>Phone</Label>
-                    <TextInput placeholder="+1(123) 123-1234" />
-                  </div>
-                </div>
-                <div className="flex flex-col xsm:flex-row xsm:gap-5">
-                  <div className="flex-1">
-                    <Label>Organization Name</Label>
-                    <TextInput placeholder="US GOV" />
-                  </div>
-                </div>
-                <div className="flex flex-col xsm:flex-row xsm:gap-5">
-                  <div className="flex-1">
-                    <Label>Organization Type</Label>
-                    <TextInput placeholder="Government" />
-                  </div>
-                </div>
-                <div className="flex flex-col xsm:flex-row xsm:gap-5">
-                  <div className="flex-1">
-                    <Label>Website</Label>
-                    <TextInput placeholder="us.gov" />
-                  </div>
-                </div>
-                <div className="flex flex-col xsm:flex-row xsm:gap-5">
-                  <div className="flex-1">
-                    <Label>Why are you interested in Engage?</Label>
-                    <TextInput placeholder="..." />
-                  </div>
-                </div>
+                <FormikProvider value={formik}>
+                  <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
+                    <div className="flex flex-col xsm:flex-row xsm:gap-5">
+                      <div className="flex-1">
+                        <Label>First Name</Label>
+                        <TextInput placeholder="Abe"
+                          className={errors.firstName && touched.firstName ? "input-error" : ''}
+                          {...getFieldProps('firstName')} />
+                        <TextFieldError name="firstName" component="span" className="error" />
+                      </div>
+                      <div className="flex-1">
+                        <Label>Last Name</Label>
+                        <TextInput placeholder="Lincoln" className={errors.lastName && touched.lastName ? "input-error" : ''}  {...getFieldProps('lastName')} />
+                        <TextFieldError name="lastName" component="span" className="error" />
+                      </div>
+                    </div>
+                    <div className="flex flex-col xsm:flex-row xsm:gap-5">
+                      <div className="flex-1">
+                        <Label>Work Email</Label>
+                        <TextInput placeholder="Abe.Lincoln@us.gov" type="email" className={errors.workEmail && touched.workEmail ? "input-error" : ''} {...getFieldProps('workEmail')} />
+                        <TextFieldError name="workEmail" component="span" className="error" />
 
-                <Button className="mt-5 !px-14" $secondary>
-                  Book Demo
-                </Button>
+                      </div>
+                      <div className="flex-1">
+                        <Label>Phone</Label>
+                        <TextInput placeholder="+1(123) 123-1234" className={errors.phone && touched.phone ? "input-error" : ''} {...getFieldProps('phone')} />
+                        <TextFieldError name="phone" component="span" className="error" />
+
+                      </div>
+                    </div>
+                    <div className="flex flex-col xsm:flex-row xsm:gap-5">
+                      <div className="flex-1">
+                        <Label>Organization Name</Label>
+                        <TextInput placeholder="US GOV" className={errors.organizationName && touched.organizationName ? "input-error" : ''} {...getFieldProps('organizationName')} />
+                        <TextFieldError name="organizationName" component="span" className="error" />
+
+                      </div>
+                    </div>
+                    <div className="flex flex-col xsm:flex-row xsm:gap-5">
+                      <div className="flex-1">
+                        <Label>Organization Type</Label>
+                        <TextInput placeholder="Government" className={errors.organizationType && touched.organizationType ? "input-error" : ''} {...getFieldProps('organizationType')} />
+                        <TextFieldError name="organizationType" component="span" className="error" />
+
+                      </div>
+                    </div>
+                    <div className="flex flex-col xsm:flex-row xsm:gap-5">
+                      <div className="flex-1">
+                        <Label>Website</Label>
+                        <TextInput placeholder="us.gov" className={errors.website && touched.website ? "input-error" : ''} {...getFieldProps('website')} />
+                        <TextFieldError name="website" component="span" className="error" />
+
+                      </div>
+                    </div>
+                    <div className="flex flex-col xsm:flex-row xsm:gap-5">
+                      <div className="flex-1">
+                        <Label>Why are you interested in Engage?</Label>
+                        <TextInput placeholder="..." className={errors.whyInterested && touched.whyInterested ? "input-error" : ''} {...getFieldProps('whyInterested')} />
+                        <TextFieldError name="whyInterested" component="span" className="error" />
+                      </div>
+                    </div>
+
+                    <Alert hidden={successAlert} className="bg-green-100 rounded-lg py-5 px-6 mb-2 text-base text-green-700 my-3" role="alert">
+                      Your response has been recorded; we'll get back to you shortly.
+                    </Alert>
+
+                    <Button type="submit" className="mt-5 !px-14" $secondary>
+                      Book Demo
+                    </Button>
+
+                  </Form>
+                </FormikProvider>
               </FormCardBody>
             </FormCard>
+
+
           </div>
           <div className="m-auto lg:pl-10 md:mt-12 md:pt-7 xsm:mt-10 lg:text-left z-10">
             <h4 className=" text-left pl-4 mt-4 mb-2 md:my-0 text-3.5xl md:text-[32px] text-purple-888 font-bold leading-[1.23em]">

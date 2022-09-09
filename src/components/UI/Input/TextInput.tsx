@@ -7,6 +7,8 @@ const InputStyle = styled.div<{
   margin?: any;
   $secondary?: boolean;
   errorMessage?: string;
+  className?: string;
+
 }>`
   display: inline-block;
   height: ${({ height }) => height};
@@ -50,6 +52,8 @@ type IInputProps = {
   disabled?: boolean;
   $secondary?: boolean;
   errorMessage?: string;
+  className?: string;
+
   onChange?: (e: any) => void;
 };
 
@@ -63,6 +67,8 @@ const TextInput = (props: IInputProps): JSX.Element => {
       margin={props.margin}
       $secondary={props.$secondary}
       errorMessage={props.errorMessage}
+      className={props.errorMessage}
+
     >
       <input
         type={props.type ? props.type : 'text'}

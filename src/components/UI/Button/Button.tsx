@@ -10,7 +10,7 @@ type ButtonStyleProps = {
   disabled?: boolean;
 };
 
-const ButtonStyle = tw.a<ButtonStyleProps>`
+const ButtonStyle = tw.button<ButtonStyleProps>`
   inline-flex
   flex-shrink-0
   my-auto
@@ -43,6 +43,7 @@ type IButtonProps = {
   $small?: boolean;
   target?: string;
   disabled?: boolean;
+  type?: string;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
   tooltip?: string;
 };
@@ -58,6 +59,7 @@ const Button = (props: IButtonProps): JSX.Element => {
     target,
     disabled = false,
     onClick,
+    type,
     tooltip,
   } = props;
 
@@ -68,6 +70,7 @@ const Button = (props: IButtonProps): JSX.Element => {
       <ButtonStyle
         className={className}
         rel={rel}
+        type={type}
         $secondary={$secondary}
         $donate={$donate}
         $small={$small}
