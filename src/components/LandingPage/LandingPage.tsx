@@ -1,6 +1,10 @@
+import React, { useEffect, useRef, useState } from "react";
 import { Card, CardBody } from "@material-tailwind/react";
 import styled from "styled-components";
 import tw from "tailwind-styled-components";
+import { useFormik, Form, FormikProvider, ErrorMessage } from 'formik';
+import axios from "axios";
+import * as Yup from "yup";
 
 import Container from "../../layout/Container";
 import {
@@ -252,6 +256,16 @@ const ContributeImage = tw.div`
   xl:h-140
 `;
 
+const TextFieldError = styled(ErrorMessage)`
+color: #e63946;
+font-size: 0.8rem;
+margin-top: 0.3rem;
+`;
+
+const Alert = styled.div`
+
+`;
+
 const Label = tw.div`
   text-sm
   font-bold
@@ -349,6 +363,39 @@ const ImageWrapper = styled.div`
   }
 `;
 const LandingPage = (): JSX.Element => {
+  const [successAlert, setSuccessAlert] = React.useState(true);
+
+  const StayInformedSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().required("Email is required"),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+    },
+    validationSchema: StayInformedSchema,
+    onSubmit: (values, { setSubmitting, resetForm }) => {
+      console.log('asdasdasd', values)
+      axios.post('https://sheet.best/api/sheets/607b0665-0821-4750-8efd-2e3c5b579db6', formik.values)
+        .then(response => {
+          if (response.status == 200) {
+            setSubmitting(false)
+            setSuccessAlert(false)
+            resetForm()
+            setTimeout(() => {
+              setSuccessAlert(true)
+            }, 3000);
+          }
+          console.log(response);
+        })
+      // submitReviewHandler(values);
+    },
+  });
+
+  const { errors, touched, handleBlur, values, handleSubmit, isSubmitting, getFieldProps, isValid, dirty } = formik;
+
   return (
     <ContainerFluid>
       <ContainerFluid>
@@ -517,21 +564,38 @@ const LandingPage = (): JSX.Element => {
         <ContainerNew className="mt-24 md:mt-24  flex flex-col-reverse md:flex-row justify-around mb-32">
           <div className="form-wrapper relative ">
             <div className="form-background ">
-              <img className="relative w-full z-20 max-w-[400px] xl:max-w-none"  src={mainshape6} alt="" />
+              <img className="relative w-full z-20 max-w-[400px] xl:max-w-none" src={mainshape6} alt="" />
               <img className="absolute w-full top-[15%] z-10" src={stroke6} alt="" />
             </div>
             <Card
               className="absolute z-30  top-[55%] left-[50%] mx-auto xxs:w-64 xsm:w-72 sm:w-80 md:w-80 lg:w-80 xl:w-96 rounded-[30px]"
-              style={{ boxShadow: " 0 0 34px 0 rgba(184,167,240,0.47)", transform:'translate(-50%,-50%)' }}
+              style={{ boxShadow: " 0 0 34px 0 rgba(184,167,240,0.47)", transform: 'translate(-50%,-50%)' }}
             >
               <CardBody>
-                <Label>Name</Label>
-                <TextInput placeholder="Abe" />
-                <Label>Email</Label>
-                <TextInput placeholder="Abe.Lincoln@us.gov" />
-                <Button className="mt-5 !px-14" $secondary>
-                  Sign Up
-                </Button>
+                <FormikProvider value={formik}>
+                  <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
+                    <div>
+                      <Label>Name</Label>
+                      <TextInput placeholder="Abe"
+                        className={errors.name && touched.name ? "input-error" : ''}
+                        {...getFieldProps('name')} />
+                      <TextFieldError name="name" component="span" className="error" />
+                    </div>
+
+                    <div>
+                      <Label>Email</Label>
+                      <TextInput placeholder="Abe.Lincoln@us.gov" type="email" className={errors.email && touched.email ? "input-error" : ''} {...getFieldProps('email')} />
+                      <TextFieldError name="email" component="span" className="error" />
+                    </div>
+                    <Alert hidden={successAlert} className="bg-green-100 rounded-lg py-5 px-6 mb-2 text-base text-green-700 my-3" role="alert">
+                      Signed up successfully!
+                    </Alert>
+
+                    <Button type="submit" className="mt-5 !px-14" $secondary>
+                      Sign Up
+                    </Button>
+                  </Form>
+                </FormikProvider>
               </CardBody>
             </Card>
           </div>
