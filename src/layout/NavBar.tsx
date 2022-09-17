@@ -163,7 +163,6 @@ const NavBar = (): JSX.Element => {
     navigate(`${path}`);
   };
   const location = useLocation();
-  console.log(location.pathname)
   return (
     <Container className={`${hamburgerActive ? 'fixed font-sans' : 'font-sans'}`}>
       <div onClick={() => redirectTo('/')} >
@@ -189,9 +188,9 @@ const NavBar = (): JSX.Element => {
           {/* <NavAnchor className={location.pathname === "/podcast" ? "active" : ""} onClick={() => redirectTo('/podcast')}>Podcast</NavAnchor>
           <NavAnchor className={location.pathname === "/blog" ? "active" : ""} onClick={() => redirectTo('/blog')}>Blog</NavAnchor>  */}
         </MenuLinks>
-        <NavCTAButton className={location.pathname === "/demo" ? "active" : ""} onClick={() => redirectTo('/demo')}>
+        {/* <NavCTAButton className={location.pathname === "/demo" ? "active" : ""} onClick={() => redirectTo('/demo')}>
           For Campaigns
-        </NavCTAButton>
+        </NavCTAButton> */}
       </MenuContainer>
     </Container>
   );

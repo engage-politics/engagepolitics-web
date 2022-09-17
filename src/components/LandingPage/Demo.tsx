@@ -269,7 +269,6 @@ const Join = (): JSX.Element => {
 
   };
   const slidePrev = (e: any) => {
-    console.log('l clicked')
     setCurrentSlide((prev) => {
       setArrowClicked(true);
       return prev === 0 ? content.carouselImageNames.length - 1 : currentSlide - 1;

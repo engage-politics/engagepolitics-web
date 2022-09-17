@@ -377,7 +377,6 @@ const LandingPage = (): JSX.Element => {
     },
     validationSchema: StayInformedSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
-      console.log('asdasdasd', values)
       axios.post('https://sheet.best/api/sheets/607b0665-0821-4750-8efd-2e3c5b579db6', formik.values)
         .then(response => {
           if (response.status == 200) {
@@ -388,7 +387,6 @@ const LandingPage = (): JSX.Element => {
               setSuccessAlert(true)
             }, 3000);
           }
-          console.log(response);
         })
       // submitReviewHandler(values);
     },
@@ -424,16 +422,20 @@ const LandingPage = (): JSX.Element => {
               you get your friends and family to the polls as well!
             </Paragraph>
             <div className=" flex flex-col md:flex-row">
-              <img
-                className="ml-0 h-12 md:mr-3 md:ml-0 w-fit md:w-auto"
-                src={downloadApple}
-                alt="store_icon"
-              />
-              <img
-                className="ml-0 h-12 mt-4 md:mt-0 md:m-0 w-fit md:w-auto"
-                src={downloadGoogle}
-                alt="store_icon"
-              />
+              <a href="https://apps.apple.com/us/app/engage-politics/id1583023869" target="_blank" rel="noreferrer">
+                <img
+                  className="ml-0 h-12 md:mr-3 md:ml-0 w-fit md:w-auto"
+                  src={downloadApple}
+                  alt="store_icon"
+                />
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.engagepolitics" target="_blank" rel="noreferrer">
+                <img
+                  className="ml-0 h-12 mt-4 md:mt-0 md:m-0 w-fit md:w-auto"
+                  src={downloadGoogle}
+                  alt="store_icon"
+                />
+              </a>
             </div>
           </div>
           <ImageWrapper className="mt-16 px-4 md:px-0 md:mt-0 h-full relative">
