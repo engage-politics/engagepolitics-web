@@ -109,7 +109,6 @@ const MenuLinks = tw.div`
   p-2
   lg:h-10
   px-6
-  xl:px-14
   py-1
 
   bg-white
@@ -188,9 +187,9 @@ const NavBar = (): JSX.Element => {
           {/* <NavAnchor className={location.pathname === "/podcast" ? "active" : ""} onClick={() => redirectTo('/podcast')}>Podcast</NavAnchor>
           <NavAnchor className={location.pathname === "/blog" ? "active" : ""} onClick={() => redirectTo('/blog')}>Blog</NavAnchor>  */}
         </MenuLinks>
-        {/* <NavCTAButton className={location.pathname === "/demo" ? "active" : ""} onClick={() => redirectTo('/demo')}>
+        <NavCTAButton className={location.pathname === "/demo" ? "active" : ""} onClick={() => redirectTo('/demo')}>
           For Campaigns
-        </NavCTAButton> */}
+        </NavCTAButton>
       </MenuContainer>
     </Container>
   );

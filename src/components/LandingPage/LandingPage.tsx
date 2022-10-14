@@ -296,6 +296,13 @@ const ContainerFluid = tw.div`
 w-full
 relative
 `;
+
+const Subtitle = tw.h6`
+text-sm
+text-purple-600
+font-bold
+text-center
+`;
 // new end
 const ImageWrapper = styled.div`
   width: 100%;
@@ -610,6 +617,11 @@ const LandingPage = (): JSX.Element => {
             </Paragraph>
           </div>
         </ContainerNew>
+      </ContainerFluid>
+      <ContainerFluid text-center>
+        <Subtitle item-center mb-2>
+        For customer support, please email <a href="mailto:info@engagepolitics.com">info@engagepolitics.com</a> 
+        </Subtitle>
       </ContainerFluid>
     </ContainerFluid>
   );
