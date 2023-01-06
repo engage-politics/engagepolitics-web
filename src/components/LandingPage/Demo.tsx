@@ -356,10 +356,7 @@ const Demo = (): JSX.Element => {
 
 	return (
 		<div className="p-2">
-			<ContainerX
-				ref={formRef}
-				className="mt-32 justify-center md:!items-center lg:mt-0 max-h-fit relative z-30 "
-			>
+			<ContainerX className="mt-32 justify-center md:!items-center lg:mt-0 max-h-fit relative z-30 ">
 				<div className="mx-auto  text-center lg:text-left w-full xl:w-[50%] xl:ml-0 xl:pl-4">
 					<p className="font-bold font-sans text-3.25xl md:text-4xl leading-10 md:leading-snug mb-7  mx-auto text-purple-888 font-bold ">
 						Reach voters where they are, before and on Election Day!
@@ -458,7 +455,10 @@ const Demo = (): JSX.Element => {
 			</ContainerX>
 
 			{/* <BgFormContainer className="pb-2 !m-auto"> */}
-			<ContainerX className="mt-24 min-h-fit lg:mt-32 pb-6 lg:mb-20 xl:pt-0 relative">
+			<ContainerX
+				ref={formRef}
+				className="mt-24 min-h-fit lg:mt-32 pb-6 lg:mb-20 xl:pt-0 relative"
+			>
 				<div className="flex items-center lg:justify-between flex-col lg:flex-row w-full relative">
 					<div className="im mt-12 pl-0 w-full max-w-[100%] lg:max-w-[55%]">
 						<AnnonBack />
