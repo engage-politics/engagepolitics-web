@@ -273,6 +273,18 @@ const Demo = (): JSX.Element => {
 				: currentSlide - 1;
 		});
 	};
+	const scrollToForm = () => {
+		if (formRef) {
+			const curr: any = formRef.current;
+			if (curr) {
+				curr.scrollIntoView({
+					behavior: "smooth",
+					block: "start",
+				});
+			}
+		}
+	};
+
 	React.useEffect(() => {
 		if (!arrowClicked) {
 			const intervalId = setInterval(() => {
@@ -411,18 +423,7 @@ const Demo = (): JSX.Element => {
 						best fundraising platform at the lowest cost.
 					</p>
 					<div className="mx-auto flex justify-center lg:block">
-						<Button
-							$secondary
-							onClick={() => {
-								if (formRef) {
-									const curr: any = formRef.current;
-									curr.scrollIntoView({
-										behavior: "smooth",
-										block: "start",
-									});
-								}
-							}}
-						>
+						<Button $secondary onClick={scrollToForm}>
 							Free Demo
 						</Button>
 					</div>
@@ -449,7 +450,9 @@ const Demo = (): JSX.Element => {
 						best fundraising platform at the lowest cost.
 					</p>
 					<div className="mx-auto flex justify-center lg:block">
-						<Button $secondary>Free Demo</Button>
+						<Button $secondary onClick={scrollToForm}>
+							Free Demo
+						</Button>
 					</div>
 				</div>
 			</ContainerX>
