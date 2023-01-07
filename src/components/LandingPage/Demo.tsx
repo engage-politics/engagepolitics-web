@@ -413,8 +413,10 @@ const Demo = (): JSX.Element => {
 
 			<ContainerX className="mt-20 justify-center md:!items-center lg:mt-20 max-h-fit relative z-30 gap-8">
 				<div className="lg:hidden block mx-auto  text-center lg:text-left w-full xl:w-[50%] xl:ml-0 xl:pl-4">
-					<p className="font-bold font-sans text-3.25xl md:text-4xl leading-10 md:leading-snug mb-7  mx-auto text-purple-888 font-bold ">
-						Save up to 25% on credit card contributions
+					<p className="font-bold font-sans text-3.25xl md:text-4xl leading-10 md:leading-snug mb-7  mx-auto text-purple-888 font-bold">
+						<span>Save up to 25%</span>{" "}
+						<br className="block xsm:hidden" />
+						on credit card contributions
 					</p>
 					<p className="font-sans text-purple-889 text-lg mb-7 font-medium">
 						Political donation processors are unresponsive and way
@@ -460,7 +462,7 @@ const Demo = (): JSX.Element => {
 			{/* <BgFormContainer className="pb-2 !m-auto"> */}
 			<ContainerX
 				ref={formRef}
-				className="mt-24 min-h-fit lg:mt-32 pb-6 lg:mb-20 xl:pt-0 relative"
+				className="mt-12 min-h-fit lg:mt-32 pb-6 lg:mb-20 xl:pt-0 relative"
 			>
 				<div className="flex items-center lg:justify-between flex-col lg:flex-row w-full relative">
 					<div className="im mt-12 pl-0 w-full max-w-[100%] lg:max-w-[55%]">
