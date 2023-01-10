@@ -368,7 +368,12 @@ const Demo = (): JSX.Element => {
 
 	return (
 		<div className="p-2">
-			<ContainerX className="mt-32 justify-center md:!items-center lg:mt-0 max-h-fit relative z-30 ">
+			<div className="flex justify-center mt-28 lg:mt-0">
+				<a href="https://engagepro.substack.com/" target="_blank">
+					<Button type="submit">Campaign Pro Blog</Button>
+				</a>
+			</div>
+			<ContainerX className="mt-14 lg:mt-4 justify-center md:!items-center max-h-fit relative z-30 ">
 				<div className="mx-auto  text-center lg:text-left w-full xl:w-[50%] xl:ml-0 xl:pl-4">
 					<p className="font-bold font-sans text-3.25xl md:text-4xl leading-10 md:leading-snug mb-7  mx-auto text-purple-888 font-bold ">
 						Reach voters where they are, before and on Election Day!
