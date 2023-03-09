@@ -6,29 +6,30 @@ import { useFormik, Form, FormikProvider, ErrorMessage } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
 
+
 import {
-	downloadApple,
-	downloadGoogle,
-	mainshape1,
-	mainshape2,
-	mainshape3,
-	mainshape4,
-	mainshape6,
-	phone1,
-	phone2,
-	phone3,
-	phone4,
-	sideshape1,
-	sideshape2,
-	sideshape3,
-	sideshape4,
-	sideshape5,
-	stroke1,
-	stroke2,
-	stroke3,
-	stroke4,
-	stroke6,
-	sideshape6,
+  downloadApple,
+  downloadGoogle,
+  mainshape1,
+  mainshape2,
+  mainshape3,
+  mainshape4,
+  mainshape6,
+  phone1,
+  phone2,
+  phone3,
+  phone4,
+  sideshape1,
+  sideshape2,
+  sideshape3,
+  sideshape4,
+  sideshape5,
+  stroke1,
+  stroke2,
+  stroke3,
+  stroke4,
+  stroke6,
+  sideshape6,
 } from "../../utils/imagePaths";
 
 import Button from "../UI/Button/Button";
@@ -374,369 +375,369 @@ const ImageWrapper = styled.div`
 	}
 `;
 const LandingPage = (): JSX.Element => {
-	const location = useLocation();
-	const navigate = useNavigate();
-	const [successAlert, setSuccessAlert] = React.useState(true);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [successAlert, setSuccessAlert] = React.useState(true);
 
-	const StayInformedSchema = Yup.object().shape({
-		name: Yup.string().required("Name is required"),
-		email: Yup.string().required("Email is required"),
-	});
+  const StayInformedSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().required("Email is required"),
+  });
 
-	const formik = useFormik({
-		initialValues: {
-			name: "",
-			email: "",
-		},
-		validationSchema: StayInformedSchema,
-		onSubmit: (values, { setSubmitting, resetForm }) => {
-			axios
-				.post(
-					"https://sheet.best/api/sheets/607b0665-0821-4750-8efd-2e3c5b579db6",
-					formik.values
-				)
-				.then(response => {
-					if (response.status == 200) {
-						setSubmitting(false);
-						setSuccessAlert(false);
-						resetForm();
-						setTimeout(() => {
-							setSuccessAlert(true);
-						}, 3000);
-					}
-				});
-			// submitReviewHandler(values);
-		},
-	});
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+    },
+    validationSchema: StayInformedSchema,
+    onSubmit: (values, { setSubmitting, resetForm }) => {
+      axios
+        .post(
+          "https://sheet.best/api/sheets/1e207d5b-2d13-4134-ad11-51b799f14fe4",
+          formik.values
+        )
+        .then(response => {
+          if (response.status == 200) {
+            setSubmitting(false);
+            setSuccessAlert(false);
+            resetForm();
+            setTimeout(() => {
+              setSuccessAlert(true);
+            }, 3000);
+          }
+        });
+      // submitReviewHandler(values);
+    },
+  });
 
-	const redirectTo = (path: string) => {
-		navigate(`${path}`);
-	};
+  const redirectTo = (path: string) => {
+    navigate(`${path}`);
+  };
 
-	const {
-		errors,
-		touched,
-		handleBlur,
-		values,
-		handleSubmit,
-		isSubmitting,
-		getFieldProps,
-		isValid,
-		dirty,
-	} = formik;
+  const {
+    errors,
+    touched,
+    handleBlur,
+    values,
+    handleSubmit,
+    isSubmitting,
+    getFieldProps,
+    isValid,
+    dirty,
+  } = formik;
 
-	return (
-		<ContainerFluid>
-			<ContainerFluid>
-				<img
-					className="absolute bottom-1/2 md:bottom-[-40%] left-[-2%]"
-					src={sideshape1}
-					alt=""
-				/>
-				{/* <img className="absolute right-0" src={sideshape2} alt="" />
+  return (
+    <ContainerFluid>
+      <ContainerFluid>
+        <img
+          className="absolute bottom-1/2 md:bottom-[-40%] left-[-2%]"
+          src={sideshape1}
+          alt=""
+        />
+        {/* <img className="absolute right-0" src={sideshape2} alt="" />
       <img className="absolute left-0" src={sideshape3} alt="" />
       <img className="absolute right-0" src={sideshape4} alt="" />
       <img className="absolute left-0" src={sideshape5} alt="" /> */}
-				{/* SECTION - 1 */}
-				<ContainerWrapper>
-					<div className="flex justify-end mt-28 lg:mt-0 mx-10">
-						<Button
-							className="lg:hidden"
-							onClick={() => redirectTo("/demo")}
-						>
-							For Campaigns
-						</Button>
-					</div>
-					<ContainerNew className="lg:items-start">
-						<div className="w-full px-4 mx-auto md:px-0 md:m-auto md:max-w-xl lg:text-left">
-							<Title className="text-left">
-								Democracy needs engaged citizens more than ever
-								before. We’re here to help.
-							</Title>
-							<Paragraph className="text-left">
-								Participating in democracy has never been more
-								important, but it seems harder than ever to keep
-								up with everything. Designed by policy experts
-								and software engineers who care deeply about
-								democracy and civic health, the Engage app gives
-								you all the election information you need in
-								five minutes or less, and helps you get your
-								friends and family to the polls as well!
-							</Paragraph>
-							<div className=" flex flex-col md:flex-row">
-								<a
-									href="https://apps.apple.com/us/app/engage-politics/id1583023869"
-									target="_blank"
-									rel="noreferrer"
-								>
-									<img
-										className="ml-0 h-12 md:mr-3 md:ml-0 w-fit md:w-auto"
-										src={downloadApple}
-										alt="store_icon"
-									/>
-								</a>
-								<a
-									href="https://play.google.com/store/apps/details?id=com.engagepolitics"
-									target="_blank"
-									rel="noreferrer"
-								>
-									<img
-										className="ml-0 h-12 mt-4 md:mt-0 md:m-0 w-fit md:w-auto"
-										src={downloadGoogle}
-										alt="store_icon"
-									/>
-								</a>
-							</div>
-						</div>
-						<ImageWrapper className="mt-16 px-4 md:px-0 md:mt-0 h-full relative">
-							<div className="image-inner-wrapper relative">
-								<img
-									src={stroke1}
-									alt=""
-									className="stroke_layer "
-								/>
-								<img
-									src={mainshape1}
-									alt=""
-									className="fill_layer "
-								/>
-								<img src={phone1} alt="" className="phone" />
-							</div>
-						</ImageWrapper>
-					</ContainerNew>
-				</ContainerWrapper>
-			</ContainerFluid>
-			{/* SECTION - 2 */}
-			<ContainerFluid>
-				<img className="absolute right-0" src={sideshape2} alt="" />
-				<ContainerNew className="mt-24 md:mt-56  flex flex-col-reverse md:flex-row justify-around">
-					<ImageWrapper className="mt-16 px-4 md:px-0 md:pr-16 md:mt-0 h-full relative">
-						<div className="image-inner-wrapper relative  w-m-[500px]">
-							<img
-								src={stroke2}
-								alt=""
-								className="stroke_layer_2 absolute w-fit top-[15%]"
-							/>
-							<img
-								src={mainshape2}
-								alt=""
-								className="fill_layer_2 absolute top-[10%] w-fit"
-							/>
-							<img
-								src={phone2}
-								alt=""
-								className="phone phone-sec-2 top-0 absolute"
-							/>
-						</div>
-					</ImageWrapper>
-					<div className="m-auto lg:text-left w-full">
-						<Title className="!m-0 mr-0 w-full max-w-full">
-							Find your district, <br></br> candidates & voting
-							<br></br> location
-						</Title>
-					</div>
-				</ContainerNew>
-			</ContainerFluid>
-			{/* SECTION - 3 */}
-			<ContainerFluid>
-				<img className="absolute left-0" src={sideshape3} alt="" />
-				<ContainerNew className="mt-60 md:mt-32 items-center  flex flex-col md:flex-row justify-around">
-					<div className="m-auto md:m-auto  w-full px-4 md:px-0 md:pr-16">
-						<Title className="m-0 text-center md:text-right">
-							Elections synced to your calendar so you never miss
-							a vote!
-						</Title>
-					</div>
-					<ImageWrapper className=" xsm:scale-1 mt-16  md:mt-0 h-full relative">
-						<div className="image-inner-wrapper relative  w-m-[500px]">
-							<img
-								src={stroke3}
-								alt=""
-								className="stroke_layer_2 absolute w-fit top-[15%]"
-							/>
-							<img
-								src={mainshape3}
-								alt=""
-								className="fill_layer_2 absolute top-[5%] w-fit"
-							/>
-							<img
-								src={phone3}
-								alt=""
-								className="phone ph-sec-3 top-0 absolute"
-							/>
-						</div>
-					</ImageWrapper>
-				</ContainerNew>
-			</ContainerFluid>
-			{/* SECTION - 4 */}
-			<ContainerFluid>
-				<img className="absolute right-0" src={sideshape4} alt="" />
-				<ContainerNew className=" md:mt-64  flex flex-col-reverse md:flex-row justify-around">
-					<ImageWrapper className="mt-16 px-4 md:px-0 md:pr-16 md:mt-0 h-full relative">
-						<div className="image-inner-wrapper relative  w-m-[500px]">
-							<img
-								src={stroke4}
-								alt=""
-								className="stroke_layer_2 absolute w-fit top-[15%]"
-							/>
-							<img
-								src={mainshape4}
-								alt=""
-								className="fill_layer_2 absolute top-[10%] w-fit"
-							/>
-							<img
-								src={phone4}
-								alt=""
-								className="phone phone-sec-2 top-0 absolute"
-							/>
-						</div>
-					</ImageWrapper>
-					<div className="m-auto lg:text-left w-full">
-						<Title className="m-0">
-							Be a more active citizen, right from your
-							smartphone!
-						</Title>
-					</div>
-				</ContainerNew>
-			</ContainerFluid>
-			{/* SECTION - 5 */}
-			<ContainerFluid>
-				<img className="absolute left-0" src={sideshape5} alt="" />
-				<ContainerNew className="mt-64 md:mt-24  flex flex-col md:flex-row justify-around">
-					<div className="m-auto  w-full px-4 md:px-0 md:pr-16">
-						<Title className="m-0 text-center md:text-right">
-							We make it easy to mobilize your friends and family
-						</Title>
-					</div>
-					<ImageWrapper className=" mt-16  md:mt-0 h-full relative">
-						<div className="image-inner-wrapper sec-4 relative  w-m-[500px]">
-							<img
-								src={stroke3}
-								alt=""
-								className="stroke_layer_2 absolute w-fit top-0 rotate-[177deg]"
-							/>
-							<img
-								src={mainshape3}
-								alt=""
-								className="fill_layer_2 absolute top-[5%] w-fit"
-							/>
-							<img
-								src={phone3}
-								alt=""
-								className="phone ph-sec-4 top-0 absolute"
-							/>
-						</div>
-					</ImageWrapper>
-				</ContainerNew>
-			</ContainerFluid>
-			{/* SECTION - 5 */}
-			<ContainerFluid>
-				<img className="absolute right-0" src={sideshape6} alt="" />
-				<ContainerNew className="mt-24 md:mt-24  flex flex-col-reverse md:flex-row justify-around mb-32">
-					<div className="form-wrapper relative ">
-						<div className="form-background ">
-							<img
-								className="relative w-full z-20 max-w-[400px] xl:max-w-none"
-								src={mainshape6}
-								alt=""
-							/>
-							<img
-								className="absolute w-full top-[15%] z-10"
-								src={stroke6}
-								alt=""
-							/>
-						</div>
-						<Card
-							className="absolute z-30  top-[55%] left-[50%] mx-auto xxs:w-64 xsm:w-72 sm:w-80 md:w-80 lg:w-80 xl:w-96 rounded-[30px]"
-							style={{
-								boxShadow: " 0 0 34px 0 rgba(184,167,240,0.47)",
-								transform: "translate(-50%,-50%)",
-							}}
-						>
-							<CardBody>
-								<FormikProvider value={formik}>
-									<Form
-										autoComplete="off"
-										noValidate
-										onSubmit={handleSubmit}
-									>
-										<div>
-											<Label>Name</Label>
-											<TextInput
-												placeholder="Abe"
-												className={
-													errors.name && touched.name
-														? "input-error"
-														: ""
-												}
-												{...getFieldProps("name")}
-											/>
-											<TextFieldError
-												name="name"
-												component="span"
-												className="error"
-											/>
-										</div>
+        {/* SECTION - 1 */}
+        <ContainerWrapper>
+          <div className="flex justify-end mt-28 lg:mt-0 mx-10">
+            <Button
+              className="lg:hidden"
+              onClick={() => redirectTo("/demo")}
+            >
+              For Campaigns
+            </Button>
+          </div>
+          <ContainerNew className="lg:items-start">
+            <div className="w-full px-4 mx-auto md:px-0 md:m-auto md:max-w-xl lg:text-left">
+              <Title className="text-left">
+                Democracy needs engaged citizens more than ever
+                before. We’re here to help.
+              </Title>
+              <Paragraph className="text-left">
+                Participating in democracy has never been more
+                important, but it seems harder than ever to keep
+                up with everything. Designed by policy experts
+                and software engineers who care deeply about
+                democracy and civic health, the Engage app gives
+                you all the election information you need in
+                five minutes or less, and helps you get your
+                friends and family to the polls as well!
+              </Paragraph>
+              <div className=" flex flex-col md:flex-row">
+                <a
+                  href="https://apps.apple.com/us/app/engage-politics/id1583023869"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    className="ml-0 h-12 md:mr-3 md:ml-0 w-fit md:w-auto"
+                    src={downloadApple}
+                    alt="store_icon"
+                  />
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.engagepolitics"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    className="ml-0 h-12 mt-4 md:mt-0 md:m-0 w-fit md:w-auto"
+                    src={downloadGoogle}
+                    alt="store_icon"
+                  />
+                </a>
+              </div>
+            </div>
+            <ImageWrapper className="mt-16 px-4 md:px-0 md:mt-0 h-full relative">
+              <div className="image-inner-wrapper relative">
+                <img
+                  src={stroke1}
+                  alt=""
+                  className="stroke_layer "
+                />
+                <img
+                  src={mainshape1}
+                  alt=""
+                  className="fill_layer "
+                />
+                <img src={phone1} alt="" className="phone" />
+              </div>
+            </ImageWrapper>
+          </ContainerNew>
+        </ContainerWrapper>
+      </ContainerFluid>
+      {/* SECTION - 2 */}
+      <ContainerFluid>
+        <img className="absolute right-0" src={sideshape2} alt="" />
+        <ContainerNew className="mt-24 md:mt-56  flex flex-col-reverse md:flex-row justify-around">
+          <ImageWrapper className="mt-16 px-4 md:px-0 md:pr-16 md:mt-0 h-full relative">
+            <div className="image-inner-wrapper relative  w-m-[500px]">
+              <img
+                src={stroke2}
+                alt=""
+                className="stroke_layer_2 absolute w-fit top-[15%]"
+              />
+              <img
+                src={mainshape2}
+                alt=""
+                className="fill_layer_2 absolute top-[10%] w-fit"
+              />
+              <img
+                src={phone2}
+                alt=""
+                className="phone phone-sec-2 top-0 absolute"
+              />
+            </div>
+          </ImageWrapper>
+          <div className="m-auto lg:text-left w-full">
+            <Title className="!m-0 mr-0 w-full max-w-full">
+              Find your district, <br></br> candidates & voting
+              <br></br> location
+            </Title>
+          </div>
+        </ContainerNew>
+      </ContainerFluid>
+      {/* SECTION - 3 */}
+      <ContainerFluid>
+        <img className="absolute left-0" src={sideshape3} alt="" />
+        <ContainerNew className="mt-60 md:mt-32 items-center  flex flex-col md:flex-row justify-around">
+          <div className="m-auto md:m-auto  w-full px-4 md:px-0 md:pr-16">
+            <Title className="m-0 text-center md:text-right">
+              Elections synced to your calendar so you never miss
+              a vote!
+            </Title>
+          </div>
+          <ImageWrapper className=" xsm:scale-1 mt-16  md:mt-0 h-full relative">
+            <div className="image-inner-wrapper relative  w-m-[500px]">
+              <img
+                src={stroke3}
+                alt=""
+                className="stroke_layer_2 absolute w-fit top-[15%]"
+              />
+              <img
+                src={mainshape3}
+                alt=""
+                className="fill_layer_2 absolute top-[5%] w-fit"
+              />
+              <img
+                src={phone3}
+                alt=""
+                className="phone ph-sec-3 top-0 absolute"
+              />
+            </div>
+          </ImageWrapper>
+        </ContainerNew>
+      </ContainerFluid>
+      {/* SECTION - 4 */}
+      <ContainerFluid>
+        <img className="absolute right-0" src={sideshape4} alt="" />
+        <ContainerNew className=" md:mt-64  flex flex-col-reverse md:flex-row justify-around">
+          <ImageWrapper className="mt-16 px-4 md:px-0 md:pr-16 md:mt-0 h-full relative">
+            <div className="image-inner-wrapper relative  w-m-[500px]">
+              <img
+                src={stroke4}
+                alt=""
+                className="stroke_layer_2 absolute w-fit top-[15%]"
+              />
+              <img
+                src={mainshape4}
+                alt=""
+                className="fill_layer_2 absolute top-[10%] w-fit"
+              />
+              <img
+                src={phone4}
+                alt=""
+                className="phone phone-sec-2 top-0 absolute"
+              />
+            </div>
+          </ImageWrapper>
+          <div className="m-auto lg:text-left w-full">
+            <Title className="m-0">
+              Be a more active citizen, right from your
+              smartphone!
+            </Title>
+          </div>
+        </ContainerNew>
+      </ContainerFluid>
+      {/* SECTION - 5 */}
+      <ContainerFluid>
+        <img className="absolute left-0" src={sideshape5} alt="" />
+        <ContainerNew className="mt-64 md:mt-24  flex flex-col md:flex-row justify-around">
+          <div className="m-auto  w-full px-4 md:px-0 md:pr-16">
+            <Title className="m-0 text-center md:text-right">
+              We make it easy to mobilize your friends and family
+            </Title>
+          </div>
+          <ImageWrapper className=" mt-16  md:mt-0 h-full relative">
+            <div className="image-inner-wrapper sec-4 relative  w-m-[500px]">
+              <img
+                src={stroke3}
+                alt=""
+                className="stroke_layer_2 absolute w-fit top-0 rotate-[177deg]"
+              />
+              <img
+                src={mainshape3}
+                alt=""
+                className="fill_layer_2 absolute top-[5%] w-fit"
+              />
+              <img
+                src={phone3}
+                alt=""
+                className="phone ph-sec-4 top-0 absolute"
+              />
+            </div>
+          </ImageWrapper>
+        </ContainerNew>
+      </ContainerFluid>
+      {/* SECTION - 5 */}
+      <ContainerFluid>
+        <img className="absolute right-0" src={sideshape6} alt="" />
+        <ContainerNew className="mt-24 md:mt-24  flex flex-col-reverse md:flex-row justify-around mb-32">
+          <div className="form-wrapper relative ">
+            <div className="form-background ">
+              <img
+                className="relative w-full z-20 max-w-[400px] xl:max-w-none"
+                src={mainshape6}
+                alt=""
+              />
+              <img
+                className="absolute w-full top-[15%] z-10"
+                src={stroke6}
+                alt=""
+              />
+            </div>
+            <Card
+              className="absolute z-30  top-[55%] left-[50%] mx-auto xxs:w-64 xsm:w-72 sm:w-80 md:w-80 lg:w-80 xl:w-96 rounded-[30px]"
+              style={{
+                boxShadow: " 0 0 34px 0 rgba(184,167,240,0.47)",
+                transform: "translate(-50%,-50%)",
+              }}
+            >
+              <CardBody>
+                <FormikProvider value={formik}>
+                  <Form
+                    autoComplete="off"
+                    noValidate
+                    onSubmit={handleSubmit}
+                  >
+                    <div>
+                      <Label>Name</Label>
+                      <TextInput
+                        placeholder="Abe"
+                        className={
+                          errors.name && touched.name
+                            ? "input-error"
+                            : ""
+                        }
+                        {...getFieldProps("name")}
+                      />
+                      <TextFieldError
+                        name="name"
+                        component="span"
+                        className="error"
+                      />
+                    </div>
 
-										<div>
-											<Label>Email</Label>
-											<TextInput
-												placeholder="Abe.Lincoln@us.gov"
-												type="email"
-												className={
-													errors.email &&
-													touched.email
-														? "input-error"
-														: ""
-												}
-												{...getFieldProps("email")}
-											/>
-											<TextFieldError
-												name="email"
-												component="span"
-												className="error"
-											/>
-										</div>
-										<Alert
-											hidden={successAlert}
-											className="bg-green-100 rounded-lg py-5 px-6 mb-2 text-base text-green-700 my-3"
-											role="alert"
-										>
-											Signed up successfully!
-										</Alert>
+                    <div>
+                      <Label>Email</Label>
+                      <TextInput
+                        placeholder="Abe.Lincoln@us.gov"
+                        type="email"
+                        className={
+                          errors.email &&
+                            touched.email
+                            ? "input-error"
+                            : ""
+                        }
+                        {...getFieldProps("email")}
+                      />
+                      <TextFieldError
+                        name="email"
+                        component="span"
+                        className="error"
+                      />
+                    </div>
+                    <Alert
+                      hidden={successAlert}
+                      className="bg-green-100 rounded-lg py-5 px-6 mb-2 text-base text-green-700 my-3"
+                      role="alert"
+                    >
+                      Signed up successfully!
+                    </Alert>
 
-										<Button
-											type="submit"
-											className="mt-5 !px-14"
-											$secondary
-										>
-											Sign Up
-										</Button>
-									</Form>
-								</FormikProvider>
-							</CardBody>
-						</Card>
-					</div>
-					<div className="m-auto max-w-xl flex-1 lg:text-left pl-0 md:pl-8">
-						{/* md:pl-28 */}
-						<Title>Stay informed</Title>
-						<Paragraph>
-							Please sign up here for early access to our app, and
-							join the movement for a better democracy today!
-						</Paragraph>
-					</div>
-				</ContainerNew>
-			</ContainerFluid>
-			<ContainerFluid text-center>
-				<Subtitle item-center mb-2>
-					For customer support, please email{" "}
-					<a href="mailto:info@engagepolitics.com">
-						info@engagepolitics.com
-					</a>
-				</Subtitle>
-			</ContainerFluid>
-		</ContainerFluid>
-	);
+                    <Button
+                      type="submit"
+                      className="mt-5 !px-14"
+                      $secondary
+                    >
+                      Sign Up
+                    </Button>
+                  </Form>
+                </FormikProvider>
+              </CardBody>
+            </Card>
+          </div>
+          <div className="m-auto max-w-xl flex-1 lg:text-left pl-0 md:pl-8">
+            {/* md:pl-28 */}
+            <Title>Stay informed</Title>
+            <Paragraph>
+              Please sign up here for early access to our app, and
+              join the movement for a better democracy today!
+            </Paragraph>
+          </div>
+        </ContainerNew>
+      </ContainerFluid>
+      <ContainerFluid text-center>
+        <Subtitle item-center mb-2>
+          For customer support, please email{" "}
+          <a href="mailto:info@engagepolitics.com">
+            info@engagepolitics.com
+          </a>
+        </Subtitle>
+      </ContainerFluid>
+    </ContainerFluid>
+  );
 };
 
 export default LandingPage;
