@@ -186,13 +186,13 @@ const Footer = () => {
           </CopyrightReserved>
         </LogoContainer>
         <Policies>
-          <a href="/">
+          <a href="/terms-of-service">
             <PolicyLink>Terms of Service</PolicyLink>
           </a>
-          <a href="/">
+          <a href="/privacy-policy">
             <PolicyLink>Privacy Policy</PolicyLink>
           </a>
-          <a href="/">
+          <a href="/cookies-policy">
             <PolicyLink>Cookies Policy</PolicyLink>
           </a>
         </Policies>
